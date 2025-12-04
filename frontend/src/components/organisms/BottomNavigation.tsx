@@ -1,5 +1,5 @@
 import React from 'react';
-import { Home, Calendar, Activity, Award, User } from 'lucide-react';
+import { Search, Calendar, Home, User } from 'lucide-react';
 
 type TabType = 'dashboard' | 'timeline' | 'calendar' | 'medical' | 'rewards';
 
@@ -12,32 +12,33 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = ({
   activeTab,
   onTabChange,
 }) => {
+  // Figma shows 4 icons: Calendar, Search, Upload, Medical ID
+  // We map these to our 5 tabs (dashboard is accessed via Home icon)
   const tabs = [
-    { id: 'dashboard' as TabType, icon: Home, label: 'Home' },
-    { id: 'timeline' as TabType, icon: Activity, label: 'Timeline' },
-    { id: 'calendar' as TabType, icon: Calendar, label: 'Calendar' },
-    { id: 'medical' as TabType, icon: User, label: 'Medical' },
-    { id: 'rewards' as TabType, icon: Award, label: 'Rewards' },
+    { id: 'calendar' as TabType, icon: Calendar },
+    { id: 'timeline' as TabType, icon: Search },
+    { id: 'dashboard' as TabType, icon: Home },
+    { id: 'medical' as TabType, icon: User },
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-2 z-40">
-      <div className="max-w-md mx-auto flex items-center justify-around">
+    <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40">
+      <div className="bg-white rounded-[24px] shadow-lg px-6 py-3 flex items-center gap-6">
         {tabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;
           return (
             <button
               key={tab.id}
+              type="button"
               onClick={() => onTabChange(tab.id)}
-              className={`flex flex-col items-center gap-1 px-3 py-2 rounded-xl transition-all duration-200 ${
+              className={`p-2 rounded-xl transition-all duration-200 ${
                 isActive
                   ? 'text-primary bg-primary/10'
-                  : 'text-gray-500 hover:text-primary hover:bg-primary/5'
+                  : 'text-gray-400 hover:text-primary'
               }`}
             >
               <Icon size={24} />
-              <span className="text-xs font-medium">{tab.label}</span>
             </button>
           );
         })}

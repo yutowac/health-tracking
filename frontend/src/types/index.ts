@@ -2,6 +2,9 @@ export interface Appointment {
   id: string;
   title: string;
   doctor: string;
+  specialty?: string;
+  email?: string;
+  phone?: string;
   date: string;
   time: string;
   location: string;
@@ -12,10 +15,30 @@ export interface Medication {
   id: string;
   name: string;
   dosage: string;
+  manufacturer?: string;
   frequency: string;
   time: string;
   taken: boolean;
   notes?: string;
+  imageUrl?: string;
+}
+
+export interface MedicalInfo {
+  name: string;
+  gender: string;
+  birthday: string;
+  height: string;
+  weight: string;
+  bloodGroup: string;
+  vaccinations: { name: string; date: string }[];
+  priorSurgeries: { name: string; date: string }[];
+  allergies: string[];
+  emergencyContacts: {
+    name: string;
+    phone: string;
+    address: string;
+    email: string;
+  }[];
 }
 
 export interface Symptom {
@@ -64,6 +87,7 @@ export interface TrackingReminder {
   title: string;
   description: string;
   time: string;
+  date?: string;
   completed: boolean;
   type: 'medication' | 'symptom' | 'appointment' | 'general';
 }
