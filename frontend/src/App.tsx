@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Bell, Search } from 'lucide-react';
 import { useHealthStore } from './store/healthStore';
 import {
@@ -24,7 +24,27 @@ import {
   CalendarView,
   DashboardOverview,
   MedicalInfoCard,
+  NewsScreen,
+  SymptomsListScreen,
+  MedicationListScreen,
+  AppointmentListScreen,
+  MedicalInfoEditScreen,
+  SymptomEditScreen,
+  MedicationEditScreen,
+  AppointmentEditScreen,
+  SearchScreen,
+  SearchResultsScreen,
+  SettingsScreen,
+  UploadScreen,
+  YourWeekScreen,
 } from './components/organisms';
+import type { Symptom, Medication, Appointment } from './types';
+
+type ScreenType = 
+  | 'dashboard' | 'timeline' | 'calendar' | 'medical' | 'rewards'
+  | 'news' | 'symptoms-list' | 'medication-list' | 'appointment-list'
+  | 'medical-edit' | 'symptom-edit' | 'medication-edit' | 'appointment-edit'
+  | 'search' | 'search-results' | 'settings' | 'upload' | 'your-week';
 
 const App: React.FC = () => {
   const {
@@ -50,6 +70,12 @@ const App: React.FC = () => {
     toggleReminderCompleted,
   } = useHealthStore();
 
+  const [currentScreen, setCurrentScreen] = useState<ScreenType>('dashboard');
+  const [selectedSymptom, setSelectedSymptom] = useState<Symptom | undefined>(undefined);
+  const [selectedMedication, setSelectedMedication] = useState<Medication | undefined>(undefined);
+  const [selectedAppointment, setSelectedAppointment] = useState<Appointment | undefined>(undefined);
+  const [searchQuery, setSearchQuery] = useState('');
+
   useEffect(() => {
     setUser(dummyUser);
     setAppointments(dummyAppointments);
@@ -60,8 +86,45 @@ const App: React.FC = () => {
     setTrackingReminders(dummyTrackingReminders);
   }, [setUser, setAppointments, setMedications, setSymptoms, setHealthMetrics, setAwards, setTrackingReminders]);
 
+  useEffect(() => {
+    setCurrentScreen(activeTab as ScreenType);
+  }, [activeTab]);
+
+  const navigateTo = (screen: ScreenType) => {
+    setCurrentScreen(screen);
+  };
+
+  const goBack = () => {
+    const mainTabs: ScreenType[] = ['dashboard', 'timeline', 'calendar', 'medical', 'rewards'];
+    if (mainTabs.includes(currentScreen)) {
+      return;
+    }
+    if (currentScreen === 'news' || currentScreen === 'your-week' || currentScreen === 'search') {
+      setCurrentScreen('dashboard');
+    } else if (currentScreen === 'symptoms-list' || currentScreen === 'symptom-edit') {
+      setCurrentScreen('dashboard');
+    } else if (currentScreen === 'medication-list' || currentScreen === 'medication-edit') {
+      setCurrentScreen('dashboard');
+    } else if (currentScreen === 'appointment-list' || currentScreen === 'appointment-edit') {
+      setCurrentScreen('dashboard');
+    } else if (currentScreen === 'medical-edit') {
+      setCurrentScreen('medical');
+    } else if (currentScreen === 'search-results') {
+      setCurrentScreen('search');
+    } else if (currentScreen === 'settings' || currentScreen === 'upload') {
+      setCurrentScreen('dashboard');
+    } else {
+      setCurrentScreen('dashboard');
+    }
+  };
+
+  const isMainTab = () => {
+    const mainTabs: ScreenType[] = ['dashboard', 'timeline', 'calendar', 'medical', 'rewards'];
+    return mainTabs.includes(currentScreen);
+  };
+
   const getPageTitle = () => {
-    switch (activeTab) {
+    switch (currentScreen) {
       case 'dashboard':
         return 'Dashboard';
       case 'timeline':
@@ -78,16 +141,20 @@ const App: React.FC = () => {
   };
 
   const renderContent = () => {
-    switch (activeTab) {
+    switch (currentScreen) {
       case 'dashboard':
         return (
           <>
             {/* Search bar with notification bell - matching Figma */}
             <div className="px-4 py-3 flex gap-3">
-              <div className="flex-1 bg-white rounded-[20px] px-4 py-3 flex items-center gap-2 shadow-sm">
+              <button
+                type="button"
+                onClick={() => navigateTo('search')}
+                className="flex-1 bg-white rounded-[20px] px-4 py-3 flex items-center gap-2 shadow-sm text-left"
+              >
                 <Search size={20} className="text-gray-400" />
                 <span className="text-gray-400 text-sm">Search your records</span>
-              </div>
+              </button>
               <button
                 type="button"
                 className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center shadow-blue relative"
@@ -104,24 +171,30 @@ const App: React.FC = () => {
               medicationsTaken={dummyWeekProgress.medicationsTaken}
               medicationsTotal={dummyWeekProgress.medicationsTotal}
               newsItems={dummyNewsItems}
-              onEditClick={() => {}}
-              onNewsClick={() => {}}
+              onEditClick={() => navigateTo('your-week')}
+              onNewsClick={() => navigateTo('news')}
               onCoinsClick={() => setActiveTab('rewards')}
             />
             
             {/* Appointment section */}
             <AppointmentSection
               appointments={appointments}
-              onAppointmentClick={() => {}}
-              onViewAll={() => {}}
+              onAppointmentClick={(apt) => {
+                setSelectedAppointment(apt);
+                navigateTo('appointment-edit');
+              }}
+              onViewAll={() => navigateTo('appointment-list')}
             />
             
             {/* Medication section */}
             <MedicationSection
               medications={medications}
-              onMedicationClick={() => {}}
+              onMedicationClick={(med) => {
+                setSelectedMedication(med);
+                navigateTo('medication-edit');
+              }}
               onMedicationToggle={(med) => toggleMedicationTaken(med.id)}
-              onViewAll={() => {}}
+              onViewAll={() => navigateTo('medication-list')}
             />
           </>
         );
@@ -156,7 +229,7 @@ const App: React.FC = () => {
           <MedicalInfoCard
             medicalInfo={dummyMedicalInfo}
             onEmailClick={() => {}}
-            onEditClick={() => {}}
+            onEditClick={() => navigateTo('medical-edit')}
           />
         );
       case 'rewards':
@@ -166,40 +239,232 @@ const App: React.FC = () => {
             onShareClick={() => {}}
           />
         );
+      case 'news':
+        return (
+          <NewsScreen
+            newsItems={dummyNewsItems}
+            onBackClick={goBack}
+            onNewsClick={() => {}}
+          />
+        );
+      case 'symptoms-list':
+        return (
+          <SymptomsListScreen
+            symptoms={dummySymptoms}
+            onBackClick={goBack}
+            onSymptomClick={(symptom) => {
+              setSelectedSymptom(symptom);
+              navigateTo('symptom-edit');
+            }}
+            onAddClick={() => {
+              setSelectedSymptom(undefined);
+              navigateTo('symptom-edit');
+            }}
+          />
+        );
+      case 'medication-list':
+        return (
+          <MedicationListScreen
+            medications={medications}
+            onBackClick={goBack}
+            onMedicationClick={(med) => {
+              setSelectedMedication(med);
+              navigateTo('medication-edit');
+            }}
+            onAddClick={() => {
+              setSelectedMedication(undefined);
+              navigateTo('medication-edit');
+            }}
+          />
+        );
+      case 'appointment-list':
+        return (
+          <AppointmentListScreen
+            appointments={appointments}
+            onBackClick={goBack}
+            onAppointmentClick={(apt) => {
+              setSelectedAppointment(apt);
+              navigateTo('appointment-edit');
+            }}
+            onAddClick={() => {
+              setSelectedAppointment(undefined);
+              navigateTo('appointment-edit');
+            }}
+          />
+        );
+      case 'medical-edit':
+        return (
+          <MedicalInfoEditScreen
+            medicalInfo={dummyMedicalInfo}
+            onBackClick={goBack}
+            onSaveClick={goBack}
+          />
+        );
+      case 'symptom-edit':
+        return (
+          <SymptomEditScreen
+            symptom={selectedSymptom}
+            onBackClick={goBack}
+            onSaveClick={goBack}
+          />
+        );
+      case 'medication-edit':
+        return (
+          <MedicationEditScreen
+            medication={selectedMedication}
+            onBackClick={goBack}
+            onSaveClick={goBack}
+          />
+        );
+      case 'appointment-edit':
+        return (
+          <AppointmentEditScreen
+            appointment={selectedAppointment}
+            onBackClick={goBack}
+            onSaveClick={goBack}
+          />
+        );
+      case 'search':
+        return (
+          <SearchScreen
+            onBackClick={goBack}
+            onSearch={(query) => {
+              setSearchQuery(query);
+              if (query.length > 0) {
+                navigateTo('search-results');
+              }
+            }}
+          />
+        );
+      case 'search-results':
+        return (
+          <SearchResultsScreen
+            query={searchQuery}
+            appointments={appointments.filter(a => 
+              a.doctor.toLowerCase().includes(searchQuery.toLowerCase()) ||
+              (a.specialty && a.specialty.toLowerCase().includes(searchQuery.toLowerCase()))
+            )}
+            medications={medications.filter(m => 
+              m.name.toLowerCase().includes(searchQuery.toLowerCase())
+            )}
+            symptoms={dummySymptoms.filter(s => 
+              s.name.toLowerCase().includes(searchQuery.toLowerCase())
+            )}
+            newsItems={dummyNewsItems.filter(n => 
+              n.title.toLowerCase().includes(searchQuery.toLowerCase())
+            )}
+            onBackClick={goBack}
+            onAppointmentClick={(apt) => {
+              setSelectedAppointment(apt);
+              navigateTo('appointment-edit');
+            }}
+            onMedicationClick={(med) => {
+              setSelectedMedication(med);
+              navigateTo('medication-edit');
+            }}
+            onSymptomClick={(symptom) => {
+              setSelectedSymptom(symptom);
+              navigateTo('symptom-edit');
+            }}
+          />
+        );
+      case 'settings':
+        return (
+          <SettingsScreen
+            userName={user?.name || 'User'}
+            userEmail={user?.email}
+            onBackClick={goBack}
+            onSettingClick={() => {}}
+            onLogoutClick={() => {}}
+          />
+        );
+      case 'upload':
+        return (
+          <UploadScreen
+            onBackClick={goBack}
+            onUploadClick={() => {}}
+          />
+        );
+      case 'your-week':
+        return (
+          <YourWeekScreen
+            progress={Math.round((dummyWeekProgress.symptomsTracked / dummyWeekProgress.symptomsTotal) * 100)}
+            coins={125}
+            medications={medications}
+            symptoms={dummySymptoms}
+            onBackClick={goBack}
+            onMedicationClick={(med) => {
+              setSelectedMedication(med);
+              navigateTo('medication-edit');
+            }}
+            onSymptomClick={(symptom) => {
+              setSelectedSymptom(symptom);
+              navigateTo('symptom-edit');
+            }}
+            onViewAllMedications={() => navigateTo('medication-list')}
+            onViewAllSymptoms={() => navigateTo('symptoms-list')}
+          />
+        );
       default:
         return null;
     }
   };
 
+  const showMainLayout = isMainTab();
+
   return (
-    <div className="min-h-screen bg-neutral-background pb-24">
-      <Header
-        title={getPageTitle()}
-        userName={user?.name}
-        avatarUrl={user?.avatarUrl}
-        notificationCount={3}
-        onMenuClick={() => {}}
-        onNotificationClick={() => {}}
-        onAvatarClick={() => {}}
-      />
+    <div className={`min-h-screen bg-neutral-background ${showMainLayout ? 'pb-24' : ''}`}>
+      {showMainLayout && (
+        <Header
+          title={getPageTitle()}
+          userName={user?.name}
+          avatarUrl={user?.avatarUrl}
+          notificationCount={3}
+          onMenuClick={() => navigateTo('settings')}
+          onNotificationClick={() => {}}
+          onAvatarClick={() => navigateTo('settings')}
+        />
+      )}
       
-      <main className="max-w-md mx-auto">
+      <main className={showMainLayout ? 'max-w-md mx-auto' : ''}>
         {renderContent()}
       </main>
       
-      <PlusMenu
-        isOpen={isPlusMenuOpen}
-        onToggle={togglePlusMenu}
-        onAddMedication={() => {}}
-        onAddSymptom={() => {}}
-        onAddAppointment={() => {}}
-        onUpload={() => {}}
-      />
-      
-      <BottomNavigation
-        activeTab={activeTab}
-        onTabChange={setActiveTab}
-      />
+      {showMainLayout && (
+        <>
+          <PlusMenu
+            isOpen={isPlusMenuOpen}
+            onToggle={togglePlusMenu}
+            onAddMedication={() => {
+              setSelectedMedication(undefined);
+              navigateTo('medication-edit');
+              togglePlusMenu();
+            }}
+            onAddSymptom={() => {
+              setSelectedSymptom(undefined);
+              navigateTo('symptom-edit');
+              togglePlusMenu();
+            }}
+            onAddAppointment={() => {
+              setSelectedAppointment(undefined);
+              navigateTo('appointment-edit');
+              togglePlusMenu();
+            }}
+            onUpload={() => {
+              navigateTo('upload');
+              togglePlusMenu();
+            }}
+          />
+          
+          <BottomNavigation
+            activeTab={activeTab}
+            onTabChange={(tab) => {
+              setActiveTab(tab);
+              setCurrentScreen(tab as ScreenType);
+            }}
+          />
+        </>
+      )}
     </div>
   );
 };
