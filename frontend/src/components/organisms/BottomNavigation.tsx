@@ -15,15 +15,15 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = ({
   // Figma shows 4 icons: Calendar, Search, Upload, Medical ID
   // We map these to our 5 tabs (dashboard is accessed via Home icon)
   const tabs = [
-    { id: 'calendar' as TabType, icon: Calendar },
-    { id: 'timeline' as TabType, icon: Search },
-    { id: 'dashboard' as TabType, icon: Home },
-    { id: 'medical' as TabType, icon: User },
+    { id: 'calendar' as TabType, icon: Calendar, label: 'Calendar' },
+    { id: 'timeline' as TabType, icon: Search, label: 'Search' },
+    { id: 'dashboard' as TabType, icon: Home, label: 'Home' },
+    { id: 'medical' as TabType, icon: User, label: 'Medical Info' },
   ];
 
   return (
     <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40">
-      <div className="bg-white rounded-[24px] shadow-lg px-6 py-3 flex items-center gap-6">
+      <div className="bg-white rounded-[24px] shadow-lg px-[20px] py-3 flex items-center gap-[30px]">
         {tabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;
@@ -32,6 +32,7 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = ({
               key={tab.id}
               type="button"
               onClick={() => onTabChange(tab.id)}
+              aria-label={tab.label}
               className={`p-2 rounded-xl transition-all duration-200 ${
                 isActive
                   ? 'text-primary bg-primary/10'

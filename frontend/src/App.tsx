@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Bell, Search } from 'lucide-react';
 import { useHealthStore } from './store/healthStore';
 import {
   dummyUser,
@@ -9,42 +8,20 @@ import {
   dummyHealthMetrics,
   dummyAwards,
   dummyTrackingReminders,
-  dummyNewsItems,
-  dummyWeekProgress,
-  dummyMedicalInfo,
 } from './data/dummyData';
 import {
   Header,
   BottomNavigation,
   PlusMenu,
-  AppointmentSection,
-  MedicationSection,
-  TimelineSection,
-  AwardSection,
-  CalendarView,
-  DashboardOverview,
-  MedicalInfoCard,
-  NewsScreen,
-  SymptomsListScreen,
-  MedicationListScreen,
-  AppointmentListScreen,
-  MedicalInfoEditScreen,
-  SymptomEditScreen,
-  MedicationEditScreen,
-  AppointmentEditScreen,
-  SearchScreen,
-  SearchResultsScreen,
-  SettingsScreen,
-  UploadScreen,
-  YourWeekScreen,
 } from './components/organisms';
+import {
+  SCREEN_REGISTRY,
+  MAIN_TABS,
+  SCREEN_TITLES,
+  BACK_NAVIGATION,
+} from './navigation';
+import type { ScreenType, ScreenContext, ScreenData } from './navigation';
 import type { Symptom, Medication, Appointment } from './types';
-
-type ScreenType = 
-  | 'dashboard' | 'timeline' | 'calendar' | 'medical' | 'rewards'
-  | 'news' | 'symptoms-list' | 'medication-list' | 'appointment-list'
-  | 'medical-edit' | 'symptom-edit' | 'medication-edit' | 'appointment-edit'
-  | 'search' | 'search-results' | 'settings' | 'upload' | 'your-week';
 
 const App: React.FC = () => {
   const {
@@ -95,319 +72,46 @@ const App: React.FC = () => {
   };
 
   const goBack = () => {
-    const mainTabs: ScreenType[] = ['dashboard', 'timeline', 'calendar', 'medical', 'rewards'];
-    if (mainTabs.includes(currentScreen)) {
+    if (MAIN_TABS.includes(currentScreen)) {
       return;
     }
-    if (currentScreen === 'news' || currentScreen === 'your-week' || currentScreen === 'search') {
-      setCurrentScreen('dashboard');
-    } else if (currentScreen === 'symptoms-list' || currentScreen === 'symptom-edit') {
-      setCurrentScreen('dashboard');
-    } else if (currentScreen === 'medication-list' || currentScreen === 'medication-edit') {
-      setCurrentScreen('dashboard');
-    } else if (currentScreen === 'appointment-list' || currentScreen === 'appointment-edit') {
-      setCurrentScreen('dashboard');
-    } else if (currentScreen === 'medical-edit') {
-      setCurrentScreen('medical');
-    } else if (currentScreen === 'search-results') {
-      setCurrentScreen('search');
-    } else if (currentScreen === 'settings' || currentScreen === 'upload') {
-      setCurrentScreen('dashboard');
-    } else {
-      setCurrentScreen('dashboard');
-    }
+    const backScreen = BACK_NAVIGATION[currentScreen];
+    setCurrentScreen(backScreen);
   };
 
-  const isMainTab = () => {
-    const mainTabs: ScreenType[] = ['dashboard', 'timeline', 'calendar', 'medical', 'rewards'];
-    return mainTabs.includes(currentScreen);
+  const isMainTab = () => MAIN_TABS.includes(currentScreen);
+
+  const getPageTitle = () => SCREEN_TITLES[currentScreen] || 'Health Tracking';
+
+  const screenContext: ScreenContext = {
+    navigateTo,
+    goBack,
+    selectedSymptom,
+    setSelectedSymptom,
+    selectedMedication,
+    setSelectedMedication,
+    selectedAppointment,
+    setSelectedAppointment,
+    searchQuery,
+    setSearchQuery,
   };
 
-  const getPageTitle = () => {
-    switch (currentScreen) {
-      case 'dashboard':
-        return 'Dashboard';
-      case 'timeline':
-        return 'Your Timeline';
-      case 'calendar':
-        return 'Calendar';
-      case 'medical':
-        return 'Medical Info';
-      case 'rewards':
-        return 'Your Badges';
-      default:
-        return 'Health Tracking';
-    }
+  const screenData: ScreenData = {
+    user,
+    appointments,
+    medications,
+    awards,
+    trackingReminders,
+    selectedDate,
+    setSelectedDate,
+    setActiveTab,
+    toggleMedicationTaken,
+    toggleReminderCompleted,
   };
 
   const renderContent = () => {
-    switch (currentScreen) {
-      case 'dashboard':
-        return (
-          <>
-            {/* Search bar with notification bell - matching Figma */}
-            <div className="px-4 py-3 flex gap-3">
-              <button
-                type="button"
-                onClick={() => navigateTo('search')}
-                className="flex-1 bg-white rounded-[20px] px-4 py-3 flex items-center gap-2 shadow-sm text-left"
-              >
-                <Search size={20} className="text-gray-400" />
-                <span className="text-gray-400 text-sm">Search your records</span>
-              </button>
-              <button
-                type="button"
-                className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center shadow-blue relative"
-              >
-                <Bell size={20} className="text-white" />
-                <span className="absolute -top-1 -right-1 w-3 h-3 bg-error rounded-full border-2 border-white" />
-              </button>
-            </div>
-            
-            {/* Dashboard Overview - Your week, coins, news */}
-            <DashboardOverview
-              symptomsTracked={dummyWeekProgress.symptomsTracked}
-              symptomsTotal={dummyWeekProgress.symptomsTotal}
-              medicationsTaken={dummyWeekProgress.medicationsTaken}
-              medicationsTotal={dummyWeekProgress.medicationsTotal}
-              newsItems={dummyNewsItems}
-              onEditClick={() => navigateTo('your-week')}
-              onNewsClick={() => navigateTo('news')}
-              onCoinsClick={() => setActiveTab('rewards')}
-            />
-            
-            {/* Appointment section */}
-            <AppointmentSection
-              appointments={appointments}
-              onAppointmentClick={(apt) => {
-                setSelectedAppointment(apt);
-                navigateTo('appointment-edit');
-              }}
-              onViewAll={() => navigateTo('appointment-list')}
-            />
-            
-            {/* Medication section */}
-            <MedicationSection
-              medications={medications}
-              onMedicationClick={(med) => {
-                setSelectedMedication(med);
-                navigateTo('medication-edit');
-              }}
-              onMedicationToggle={(med) => toggleMedicationTaken(med.id)}
-              onViewAll={() => navigateTo('medication-list')}
-            />
-          </>
-        );
-      case 'timeline':
-        return (
-          <TimelineSection
-            reminders={trackingReminders}
-            onReminderToggle={(reminder) => toggleReminderCompleted(reminder.id)}
-            onReminderClick={() => {}}
-          />
-        );
-      case 'calendar':
-        return (
-          <div className="py-4">
-            <CalendarView
-              selectedDate={selectedDate}
-              onDateSelect={setSelectedDate}
-              onMonthChange={(direction) => {
-                const newDate = new Date(selectedDate);
-                if (direction === 'prev') {
-                  newDate.setMonth(newDate.getMonth() - 1);
-                } else {
-                  newDate.setMonth(newDate.getMonth() + 1);
-                }
-                setSelectedDate(newDate);
-              }}
-            />
-          </div>
-        );
-      case 'medical':
-        return (
-          <MedicalInfoCard
-            medicalInfo={dummyMedicalInfo}
-            onEmailClick={() => {}}
-            onEditClick={() => navigateTo('medical-edit')}
-          />
-        );
-      case 'rewards':
-        return (
-          <AwardSection
-            awards={awards}
-            onShareClick={() => {}}
-          />
-        );
-      case 'news':
-        return (
-          <NewsScreen
-            newsItems={dummyNewsItems}
-            onBackClick={goBack}
-            onNewsClick={() => {}}
-          />
-        );
-      case 'symptoms-list':
-        return (
-          <SymptomsListScreen
-            symptoms={dummySymptoms}
-            onBackClick={goBack}
-            onSymptomClick={(symptom) => {
-              setSelectedSymptom(symptom);
-              navigateTo('symptom-edit');
-            }}
-            onAddClick={() => {
-              setSelectedSymptom(undefined);
-              navigateTo('symptom-edit');
-            }}
-          />
-        );
-      case 'medication-list':
-        return (
-          <MedicationListScreen
-            medications={medications}
-            onBackClick={goBack}
-            onMedicationClick={(med) => {
-              setSelectedMedication(med);
-              navigateTo('medication-edit');
-            }}
-            onAddClick={() => {
-              setSelectedMedication(undefined);
-              navigateTo('medication-edit');
-            }}
-          />
-        );
-      case 'appointment-list':
-        return (
-          <AppointmentListScreen
-            appointments={appointments}
-            onBackClick={goBack}
-            onAppointmentClick={(apt) => {
-              setSelectedAppointment(apt);
-              navigateTo('appointment-edit');
-            }}
-            onAddClick={() => {
-              setSelectedAppointment(undefined);
-              navigateTo('appointment-edit');
-            }}
-          />
-        );
-      case 'medical-edit':
-        return (
-          <MedicalInfoEditScreen
-            medicalInfo={dummyMedicalInfo}
-            onBackClick={goBack}
-            onSaveClick={goBack}
-          />
-        );
-      case 'symptom-edit':
-        return (
-          <SymptomEditScreen
-            symptom={selectedSymptom}
-            onBackClick={goBack}
-            onSaveClick={goBack}
-          />
-        );
-      case 'medication-edit':
-        return (
-          <MedicationEditScreen
-            medication={selectedMedication}
-            onBackClick={goBack}
-            onSaveClick={goBack}
-          />
-        );
-      case 'appointment-edit':
-        return (
-          <AppointmentEditScreen
-            appointment={selectedAppointment}
-            onBackClick={goBack}
-            onSaveClick={goBack}
-          />
-        );
-      case 'search':
-        return (
-          <SearchScreen
-            onBackClick={goBack}
-            onSearch={(query) => {
-              setSearchQuery(query);
-              if (query.length > 0) {
-                navigateTo('search-results');
-              }
-            }}
-          />
-        );
-      case 'search-results':
-        return (
-          <SearchResultsScreen
-            query={searchQuery}
-            appointments={appointments.filter(a => 
-              a.doctor.toLowerCase().includes(searchQuery.toLowerCase()) ||
-              (a.specialty && a.specialty.toLowerCase().includes(searchQuery.toLowerCase()))
-            )}
-            medications={medications.filter(m => 
-              m.name.toLowerCase().includes(searchQuery.toLowerCase())
-            )}
-            symptoms={dummySymptoms.filter(s => 
-              s.name.toLowerCase().includes(searchQuery.toLowerCase())
-            )}
-            newsItems={dummyNewsItems.filter(n => 
-              n.title.toLowerCase().includes(searchQuery.toLowerCase())
-            )}
-            onBackClick={goBack}
-            onAppointmentClick={(apt) => {
-              setSelectedAppointment(apt);
-              navigateTo('appointment-edit');
-            }}
-            onMedicationClick={(med) => {
-              setSelectedMedication(med);
-              navigateTo('medication-edit');
-            }}
-            onSymptomClick={(symptom) => {
-              setSelectedSymptom(symptom);
-              navigateTo('symptom-edit');
-            }}
-          />
-        );
-      case 'settings':
-        return (
-          <SettingsScreen
-            userName={user?.name || 'User'}
-            userEmail={user?.email}
-            onBackClick={goBack}
-            onSettingClick={() => {}}
-            onLogoutClick={() => {}}
-          />
-        );
-      case 'upload':
-        return (
-          <UploadScreen
-            onBackClick={goBack}
-            onUploadClick={() => {}}
-          />
-        );
-      case 'your-week':
-        return (
-          <YourWeekScreen
-            progress={Math.round((dummyWeekProgress.symptomsTracked / dummyWeekProgress.symptomsTotal) * 100)}
-            coins={125}
-            medications={medications}
-            symptoms={dummySymptoms}
-            onBackClick={goBack}
-            onMedicationClick={(med) => {
-              setSelectedMedication(med);
-              navigateTo('medication-edit');
-            }}
-            onSymptomClick={(symptom) => {
-              setSelectedSymptom(symptom);
-              navigateTo('symptom-edit');
-            }}
-            onViewAllMedications={() => navigateTo('medication-list')}
-            onViewAllSymptoms={() => navigateTo('symptoms-list')}
-          />
-        );
-      default:
-        return null;
-    }
+    const renderer = SCREEN_REGISTRY[currentScreen];
+    return renderer ? renderer(screenContext, screenData) : null;
   };
 
   const showMainLayout = isMainTab();

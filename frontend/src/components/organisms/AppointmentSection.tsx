@@ -21,8 +21,8 @@ export const AppointmentSection: React.FC<AppointmentSectionProps> = ({
   const displayedAppointments = appointments.slice(0, maxItems);
 
   return (
-    <section className="px-4 py-3">
-      <div className="flex items-center justify-between mb-3">
+    <section className="px-[26px] py-[15px]">
+      <div className="flex items-center justify-between mb-[20px]">
         <h2 className="text-lg font-semibold text-neutral-dark">{title}</h2>
         <button
           onClick={onViewAll}
@@ -31,7 +31,7 @@ export const AppointmentSection: React.FC<AppointmentSectionProps> = ({
           View all <ChevronRight size={16} />
         </button>
       </div>
-      <div className="space-y-3">
+      <div className="space-y-[20px]">
         {displayedAppointments.map((appointment) => (
           <AppointmentCard
             key={appointment.id}

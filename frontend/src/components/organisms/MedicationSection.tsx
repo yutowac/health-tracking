@@ -24,8 +24,8 @@ export const MedicationSection: React.FC<MedicationSectionProps> = ({
   const takenCount = medications.filter((m) => m.taken).length;
 
   return (
-    <section className="px-4 py-3">
-      <div className="flex items-center justify-between mb-3">
+    <section className="px-[26px] py-[15px]">
+      <div className="flex items-center justify-between mb-[20px]">
         <div>
           <h2 className="text-lg font-semibold text-neutral-dark">{title}</h2>
           <p className="text-sm text-gray-500">
@@ -39,7 +39,7 @@ export const MedicationSection: React.FC<MedicationSectionProps> = ({
           View all <ChevronRight size={16} />
         </button>
       </div>
-      <div className="space-y-3">
+      <div className="space-y-[20px]">
         {displayedMedications.map((medication) => (
           <MedicationCard
             key={medication.id}
