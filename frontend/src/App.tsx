@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { Bell, Search } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
 import { useHealthStore } from './store/healthStore';
 import {
   dummyUser,
@@ -9,22 +8,20 @@ import {
   dummyHealthMetrics,
   dummyAwards,
   dummyTrackingReminders,
-  dummyNewsItems,
-  dummyWeekProgress,
-  dummyMedicalInfo,
 } from './data/dummyData';
 import {
   Header,
   BottomNavigation,
   PlusMenu,
-  AppointmentSection,
-  MedicationSection,
-  TimelineSection,
-  AwardSection,
-  CalendarView,
-  DashboardOverview,
-  MedicalInfoCard,
 } from './components/organisms';
+import {
+  SCREEN_REGISTRY,
+  MAIN_TABS,
+  SCREEN_TITLES,
+  BACK_NAVIGATION,
+} from './navigation';
+import type { ScreenType, ScreenContext, ScreenData } from './navigation';
+import type { Symptom, Medication, Appointment } from './types';
 
 const App: React.FC = () => {
   const {
@@ -50,6 +47,12 @@ const App: React.FC = () => {
     toggleReminderCompleted,
   } = useHealthStore();
 
+  const [currentScreen, setCurrentScreen] = useState<ScreenType>('dashboard');
+  const [selectedSymptom, setSelectedSymptom] = useState<Symptom | undefined>(undefined);
+  const [selectedMedication, setSelectedMedication] = useState<Medication | undefined>(undefined);
+  const [selectedAppointment, setSelectedAppointment] = useState<Appointment | undefined>(undefined);
+  const [searchQuery, setSearchQuery] = useState('');
+
   useEffect(() => {
     setUser(dummyUser);
     setAppointments(dummyAppointments);
@@ -60,146 +63,112 @@ const App: React.FC = () => {
     setTrackingReminders(dummyTrackingReminders);
   }, [setUser, setAppointments, setMedications, setSymptoms, setHealthMetrics, setAwards, setTrackingReminders]);
 
-  const getPageTitle = () => {
-    switch (activeTab) {
-      case 'dashboard':
-        return 'Dashboard';
-      case 'timeline':
-        return 'Your Timeline';
-      case 'calendar':
-        return 'Calendar';
-      case 'medical':
-        return 'Medical Info';
-      case 'rewards':
-        return 'Your Badges';
-      default:
-        return 'Health Tracking';
+  useEffect(() => {
+    setCurrentScreen(activeTab as ScreenType);
+  }, [activeTab]);
+
+  const navigateTo = (screen: ScreenType) => {
+    setCurrentScreen(screen);
+  };
+
+  const goBack = () => {
+    if (MAIN_TABS.includes(currentScreen)) {
+      return;
     }
+    const backScreen = BACK_NAVIGATION[currentScreen];
+    setCurrentScreen(backScreen);
+  };
+
+  const isMainTab = () => MAIN_TABS.includes(currentScreen);
+
+  const getPageTitle = () => SCREEN_TITLES[currentScreen] || 'Health Tracking';
+
+  const screenContext: ScreenContext = {
+    navigateTo,
+    goBack,
+    selectedSymptom,
+    setSelectedSymptom,
+    selectedMedication,
+    setSelectedMedication,
+    selectedAppointment,
+    setSelectedAppointment,
+    searchQuery,
+    setSearchQuery,
+  };
+
+  const screenData: ScreenData = {
+    user,
+    appointments,
+    medications,
+    awards,
+    trackingReminders,
+    selectedDate,
+    setSelectedDate,
+    setActiveTab,
+    toggleMedicationTaken,
+    toggleReminderCompleted,
   };
 
   const renderContent = () => {
-    switch (activeTab) {
-      case 'dashboard':
-        return (
-          <>
-            {/* Search bar with notification bell - matching Figma */}
-            <div className="px-4 py-3 flex gap-3">
-              <div className="flex-1 bg-white rounded-[20px] px-4 py-3 flex items-center gap-2 shadow-sm">
-                <Search size={20} className="text-gray-400" />
-                <span className="text-gray-400 text-sm">Search your records</span>
-              </div>
-              <button
-                type="button"
-                className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center shadow-blue relative"
-              >
-                <Bell size={20} className="text-white" />
-                <span className="absolute -top-1 -right-1 w-3 h-3 bg-error rounded-full border-2 border-white" />
-              </button>
-            </div>
-            
-            {/* Dashboard Overview - Your week, coins, news */}
-            <DashboardOverview
-              symptomsTracked={dummyWeekProgress.symptomsTracked}
-              symptomsTotal={dummyWeekProgress.symptomsTotal}
-              medicationsTaken={dummyWeekProgress.medicationsTaken}
-              medicationsTotal={dummyWeekProgress.medicationsTotal}
-              newsItems={dummyNewsItems}
-              onEditClick={() => {}}
-              onNewsClick={() => {}}
-              onCoinsClick={() => setActiveTab('rewards')}
-            />
-            
-            {/* Appointment section */}
-            <AppointmentSection
-              appointments={appointments}
-              onAppointmentClick={() => {}}
-              onViewAll={() => {}}
-            />
-            
-            {/* Medication section */}
-            <MedicationSection
-              medications={medications}
-              onMedicationClick={() => {}}
-              onMedicationToggle={(med) => toggleMedicationTaken(med.id)}
-              onViewAll={() => {}}
-            />
-          </>
-        );
-      case 'timeline':
-        return (
-          <TimelineSection
-            reminders={trackingReminders}
-            onReminderToggle={(reminder) => toggleReminderCompleted(reminder.id)}
-            onReminderClick={() => {}}
-          />
-        );
-      case 'calendar':
-        return (
-          <div className="py-4">
-            <CalendarView
-              selectedDate={selectedDate}
-              onDateSelect={setSelectedDate}
-              onMonthChange={(direction) => {
-                const newDate = new Date(selectedDate);
-                if (direction === 'prev') {
-                  newDate.setMonth(newDate.getMonth() - 1);
-                } else {
-                  newDate.setMonth(newDate.getMonth() + 1);
-                }
-                setSelectedDate(newDate);
-              }}
-            />
-          </div>
-        );
-      case 'medical':
-        return (
-          <MedicalInfoCard
-            medicalInfo={dummyMedicalInfo}
-            onEmailClick={() => {}}
-            onEditClick={() => {}}
-          />
-        );
-      case 'rewards':
-        return (
-          <AwardSection
-            awards={awards}
-            onShareClick={() => {}}
-          />
-        );
-      default:
-        return null;
-    }
+    const renderer = SCREEN_REGISTRY[currentScreen];
+    return renderer ? renderer(screenContext, screenData) : null;
   };
 
+  const showMainLayout = isMainTab();
+
   return (
-    <div className="min-h-screen bg-neutral-background pb-24">
-      <Header
-        title={getPageTitle()}
-        userName={user?.name}
-        avatarUrl={user?.avatarUrl}
-        notificationCount={3}
-        onMenuClick={() => {}}
-        onNotificationClick={() => {}}
-        onAvatarClick={() => {}}
-      />
+    <div className={`min-h-screen bg-neutral-background ${showMainLayout ? 'pb-24' : ''}`}>
+      {showMainLayout && (
+        <Header
+          title={getPageTitle()}
+          userName={user?.name}
+          avatarUrl={user?.avatarUrl}
+          notificationCount={3}
+          onMenuClick={() => navigateTo('settings')}
+          onNotificationClick={() => {}}
+          onAvatarClick={() => navigateTo('settings')}
+        />
+      )}
       
-      <main className="max-w-md mx-auto">
+      <main className={showMainLayout ? 'max-w-md mx-auto' : ''}>
         {renderContent()}
       </main>
       
-      <PlusMenu
-        isOpen={isPlusMenuOpen}
-        onToggle={togglePlusMenu}
-        onAddMedication={() => {}}
-        onAddSymptom={() => {}}
-        onAddAppointment={() => {}}
-        onUpload={() => {}}
-      />
-      
-      <BottomNavigation
-        activeTab={activeTab}
-        onTabChange={setActiveTab}
-      />
+      {showMainLayout && (
+        <>
+          <PlusMenu
+            isOpen={isPlusMenuOpen}
+            onToggle={togglePlusMenu}
+            onAddMedication={() => {
+              setSelectedMedication(undefined);
+              navigateTo('medication-edit');
+              togglePlusMenu();
+            }}
+            onAddSymptom={() => {
+              setSelectedSymptom(undefined);
+              navigateTo('symptom-edit');
+              togglePlusMenu();
+            }}
+            onAddAppointment={() => {
+              setSelectedAppointment(undefined);
+              navigateTo('appointment-edit');
+              togglePlusMenu();
+            }}
+            onUpload={() => {
+              navigateTo('upload');
+              togglePlusMenu();
+            }}
+          />
+          
+          <BottomNavigation
+            activeTab={activeTab}
+            onTabChange={(tab) => {
+              setActiveTab(tab);
+              setCurrentScreen(tab as ScreenType);
+            }}
+          />
+        </>
+      )}
     </div>
   );
 };

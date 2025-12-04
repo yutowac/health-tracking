@@ -26,9 +26,9 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
   const progressPercentage = (symptomsTracked / symptomsTotal) * 100;
   
   return (
-    <div className="mx-4 mb-4">
+    <div>
       {/* Main overview card with gradient background */}
-      <div className="bg-gradient-to-br from-[#e8f4ff] via-[#f0e8ff] to-[#ffe8f4] rounded-[24px] p-4 shadow-card">
+      <div className="bg-gradient-to-br from-primary-light via-[#f0e8ff] to-[#ffe8f4] rounded-[24px] p-[32px] shadow-card">
         <div className="flex gap-3">
           {/* Left side - Your week card */}
           <div className="flex-1 bg-white/60 rounded-[20px] p-4 relative">
