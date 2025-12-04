@@ -19,7 +19,7 @@ export const AppointmentCard: React.FC<AppointmentCardProps> = ({
   onEditClick = () => {},
 }) => {
   return (
-    <Card onClick={onClick} className="hover:shadow-lg transition-shadow rounded-[24px]">
+    <Card onClick={onClick} padding="xl" className="hover:shadow-lg transition-shadow rounded-[24px]">
       {/* Doctor name and specialty */}
       <h3 className="text-xl font-bold text-primary-dark mb-1">{appointment.doctor}</h3>
       <p className="text-sm text-gray-500 mb-3">{appointment.specialty}</p>

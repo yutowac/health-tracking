@@ -21,7 +21,7 @@ export const AppointmentSection: React.FC<AppointmentSectionProps> = ({
   const displayedAppointments = appointments.slice(0, maxItems);
 
   return (
-    <section className="px-[26px] py-[15px]">
+    <section>
       <div className="flex items-center justify-between mb-[20px]">
         <h2 className="text-lg font-semibold text-neutral-dark">{title}</h2>
         <button

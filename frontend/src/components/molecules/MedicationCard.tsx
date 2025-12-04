@@ -16,7 +16,7 @@ export const MedicationCard: React.FC<MedicationCardProps> = ({
   onEditClick = () => {},
 }) => {
   return (
-    <Card onClick={onClick} className="hover:shadow-lg transition-shadow rounded-[24px]">
+    <Card onClick={onClick} padding="xl" className="hover:shadow-lg transition-shadow rounded-[24px]">
       <div className="flex gap-4">
         {/* Left side - Medication info */}
         <div className="flex-1">

@@ -24,7 +24,7 @@ export const MedicationSection: React.FC<MedicationSectionProps> = ({
   const takenCount = medications.filter((m) => m.taken).length;
 
   return (
-    <section className="px-[26px] py-[15px]">
+    <section>
       <div className="flex items-center justify-between mb-[20px]">
         <div>
           <h2 className="text-lg font-semibold text-neutral-dark">{title}</h2>

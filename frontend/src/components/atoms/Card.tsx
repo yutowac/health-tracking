@@ -4,7 +4,7 @@ interface CardProps {
   children: React.ReactNode;
   className?: string;
   onClick?: () => void;
-  padding?: 'none' | 'sm' | 'md' | 'lg';
+  padding?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
 }
 
 export const Card: React.FC<CardProps> = ({
@@ -20,6 +20,7 @@ export const Card: React.FC<CardProps> = ({
     sm: 'p-3',
     md: 'p-4',
     lg: 'p-6',
+    xl: 'p-[32px]',
   };
   
   const clickableStyles = onClick ? 'cursor-pointer hover:shadow-lg transition-shadow duration-200' : '';
