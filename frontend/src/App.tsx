@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Bell, Search } from 'lucide-react';
 import { useHealthStore } from './store/healthStore';
 import {
   dummyUser,
@@ -8,19 +9,21 @@ import {
   dummyHealthMetrics,
   dummyAwards,
   dummyTrackingReminders,
+  dummyNewsItems,
+  dummyWeekProgress,
+  dummyMedicalInfo,
 } from './data/dummyData';
-import { SearchBar } from './components/molecules';
 import {
   Header,
   BottomNavigation,
   PlusMenu,
   AppointmentSection,
   MedicationSection,
-  SymptomSection,
-  HealthOverview,
   TimelineSection,
   AwardSection,
   CalendarView,
+  DashboardOverview,
+  MedicalInfoCard,
 } from './components/organisms';
 
 const App: React.FC = () => {
@@ -28,8 +31,6 @@ const App: React.FC = () => {
     user,
     appointments,
     medications,
-    symptoms,
-    healthMetrics,
     awards,
     trackingReminders,
     selectedDate,
@@ -64,13 +65,13 @@ const App: React.FC = () => {
       case 'dashboard':
         return 'Dashboard';
       case 'timeline':
-        return 'Timeline';
+        return 'Your Timeline';
       case 'calendar':
         return 'Calendar';
       case 'medical':
         return 'Medical Info';
       case 'rewards':
-        return 'Rewards';
+        return 'Your Badges';
       default:
         return 'Health Tracking';
     }
@@ -81,15 +82,41 @@ const App: React.FC = () => {
       case 'dashboard':
         return (
           <>
-            <div className="px-4 py-3">
-              <SearchBar placeholder="Search health records..." />
+            {/* Search bar with notification bell - matching Figma */}
+            <div className="px-4 py-3 flex gap-3">
+              <div className="flex-1 bg-white rounded-[20px] px-4 py-3 flex items-center gap-2 shadow-sm">
+                <Search size={20} className="text-gray-400" />
+                <span className="text-gray-400 text-sm">Search your records</span>
+              </div>
+              <button
+                type="button"
+                className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center shadow-blue relative"
+              >
+                <Bell size={20} className="text-white" />
+                <span className="absolute -top-1 -right-1 w-3 h-3 bg-error rounded-full border-2 border-white" />
+              </button>
             </div>
-            <HealthOverview metrics={healthMetrics} />
+            
+            {/* Dashboard Overview - Your week, coins, news */}
+            <DashboardOverview
+              symptomsTracked={dummyWeekProgress.symptomsTracked}
+              symptomsTotal={dummyWeekProgress.symptomsTotal}
+              medicationsTaken={dummyWeekProgress.medicationsTaken}
+              medicationsTotal={dummyWeekProgress.medicationsTotal}
+              newsItems={dummyNewsItems}
+              onEditClick={() => {}}
+              onNewsClick={() => {}}
+              onCoinsClick={() => setActiveTab('rewards')}
+            />
+            
+            {/* Appointment section */}
             <AppointmentSection
               appointments={appointments}
               onAppointmentClick={() => {}}
               onViewAll={() => {}}
             />
+            
+            {/* Medication section */}
             <MedicationSection
               medications={medications}
               onMedicationClick={() => {}}
@@ -122,41 +149,21 @@ const App: React.FC = () => {
                 setSelectedDate(newDate);
               }}
             />
-            <div className="mt-4">
-              <AppointmentSection
-                appointments={appointments}
-                title="Appointments this month"
-                onAppointmentClick={() => {}}
-                onViewAll={() => {}}
-              />
-            </div>
           </div>
         );
       case 'medical':
         return (
-          <>
-            <MedicationSection
-              medications={medications}
-              title="All Medications"
-              onMedicationClick={() => {}}
-              onMedicationToggle={(med) => toggleMedicationTaken(med.id)}
-              onViewAll={() => {}}
-              maxItems={10}
-            />
-            <SymptomSection
-              symptoms={symptoms}
-              title="Symptom History"
-              onSymptomClick={() => {}}
-              onViewAll={() => {}}
-              maxItems={10}
-            />
-          </>
+          <MedicalInfoCard
+            medicalInfo={dummyMedicalInfo}
+            onEmailClick={() => {}}
+            onEditClick={() => {}}
+          />
         );
       case 'rewards':
         return (
           <AwardSection
             awards={awards}
-            onAwardClick={() => {}}
+            onShareClick={() => {}}
           />
         );
       default:

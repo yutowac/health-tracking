@@ -1,77 +1,68 @@
-import type { Appointment, Medication, Symptom, HealthMetric, NewsItem, Award, User, TrackingReminder } from '../types';
+import type { Appointment, Medication, Symptom, HealthMetric, NewsItem, Award, User, TrackingReminder, MedicalInfo } from '../types';
 
+// User data matching Figma design
 export const dummyUser: User = {
   id: '1',
-  name: 'John Doe',
-  email: 'john.doe@example.com',
+  name: 'John Smith',
+  email: 'john.smith@example.com',
   avatarUrl: undefined,
 };
 
+// Medical Info matching Figma design
+export const dummyMedicalInfo: MedicalInfo = {
+  name: 'John Smith',
+  gender: 'Male',
+  birthday: '03.08.1980',
+  height: '180cm',
+  weight: '88kg',
+  bloodGroup: 'A+',
+  vaccinations: [
+    { name: 'Covid-19', date: '21.09.2021' },
+    { name: 'Tetanus', date: '03.08.2001' },
+    { name: 'Typhus', date: '03.08.2001' },
+    { name: 'Hepatitis', date: '03.08.2001' },
+  ],
+  priorSurgeries: [
+    { name: 'Appendix', date: '21.09.2012' },
+  ],
+  allergies: ['Peanuts'],
+  emergencyContacts: [
+    {
+      name: 'Pamela Smith',
+      phone: '+49 600 500',
+      address: 'Sunset Boulevard 4, 10119 Berlin',
+      email: 'Pamela@smith.com',
+    },
+  ],
+};
+
+// Appointments matching Figma design (Dr. Schmitz)
 export const dummyAppointments: Appointment[] = [
   {
     id: '1',
-    title: 'Annual Checkup',
-    doctor: 'Dr. Sarah Johnson',
-    date: '2025-12-10',
-    time: '10:00 AM',
-    location: 'City Medical Center',
-    type: 'checkup',
-  },
-  {
-    id: '2',
-    title: 'Cardiology Follow-up',
-    doctor: 'Dr. Michael Chen',
-    date: '2025-12-15',
-    time: '2:30 PM',
-    location: 'Heart Health Clinic',
+    title: 'Neurologist Appointment',
+    doctor: 'Dr. Schmitz',
+    specialty: 'Neurologist',
+    email: 'schmitz@aol.de',
+    phone: '+49 989 232',
+    date: '20.04.2023',
+    time: '16:30',
+    location: 'Winklergasse 45, 10117 Berlin',
     type: 'specialist',
-  },
-  {
-    id: '3',
-    title: 'Physical Therapy',
-    doctor: 'Dr. Emily Roberts',
-    date: '2025-12-18',
-    time: '11:00 AM',
-    location: 'Wellness Center',
-    type: 'therapy',
   },
 ];
 
+// Medications matching Figma design (Aspirin)
 export const dummyMedications: Medication[] = [
   {
     id: '1',
-    name: 'Vitamin D',
-    dosage: '1000 IU',
-    frequency: 'Daily',
-    time: '8:00 AM',
-    taken: true,
-    notes: 'Take with breakfast',
-  },
-  {
-    id: '2',
-    name: 'Omega-3',
-    dosage: '1000mg',
-    frequency: 'Daily',
-    time: '8:00 AM',
+    name: 'Aspirin',
+    dosage: 'ASS, 500mg',
+    manufacturer: 'BAYER, coated pills',
+    frequency: '2x Daily',
+    time: '6:00, 22:00',
     taken: false,
     notes: 'Take with food',
-  },
-  {
-    id: '3',
-    name: 'Multivitamin',
-    dosage: '1 tablet',
-    frequency: 'Daily',
-    time: '9:00 AM',
-    taken: false,
-  },
-  {
-    id: '4',
-    name: 'Magnesium',
-    dosage: '400mg',
-    frequency: 'Daily',
-    time: '9:00 PM',
-    taken: false,
-    notes: 'Take before bed',
   },
 ];
 
@@ -137,95 +128,85 @@ export const dummyHealthMetrics: HealthMetric[] = [
   },
 ];
 
+// News items matching Figma design (WHO Guidelines, Cancer Research UK)
 export const dummyNewsItems: NewsItem[] = [
   {
     id: '1',
-    title: '5 Tips for Better Sleep',
-    summary: 'Discover simple habits that can improve your sleep quality and overall health.',
+    title: 'WHO Guidelines',
+    summary: 'For the first time WHO has released new Guidelines for their...',
     date: '2025-12-04',
-    category: 'Wellness',
-  },
-  {
-    id: '2',
-    title: 'Understanding Heart Health',
-    summary: 'Learn about the key factors that contribute to a healthy heart.',
-    date: '2025-12-03',
     category: 'Health',
   },
   {
-    id: '3',
-    title: 'Nutrition Basics',
-    summary: 'A guide to balanced nutrition for optimal health.',
-    date: '2025-12-02',
-    category: 'Nutrition',
+    id: '2',
+    title: 'Cancer Research UK',
+    summary: 'Cancer Research UK has 2 new drug entering their stage 2 tria...',
+    date: '2025-12-03',
+    category: 'Research',
   },
 ];
 
+// Awards matching Figma design (1 month streak)
 export const dummyAwards: Award[] = [
   {
     id: '1',
-    name: '7-Day Streak',
-    description: 'Logged health data for 7 consecutive days',
+    name: '1 month streak',
+    description: 'Congratulations! You were diligent and filled out your symptoms every day for a whole month! Be proud of yourself :)',
     type: 'gold',
     earned: true,
     earnedDate: '2025-12-01',
   },
   {
     id: '2',
-    name: 'Medication Master',
-    description: 'Took all medications on time for a week',
+    name: '2 week streak',
+    description: 'You tracked your health for 2 weeks straight!',
     type: 'silver',
     earned: true,
     earnedDate: '2025-11-28',
   },
   {
     id: '3',
-    name: 'Step Champion',
-    description: 'Reached 10,000 steps in a day',
+    name: '1 week streak',
+    description: 'You tracked your health for 1 week straight!',
     type: 'bronze',
     earned: true,
     earnedDate: '2025-11-25',
   },
-  {
-    id: '4',
-    name: 'Health Hero',
-    description: 'Complete all health goals for a month',
-    type: 'special',
-    earned: false,
-  },
 ];
 
+// Tracking reminders matching Figma Timeline design
 export const dummyTrackingReminders: TrackingReminder[] = [
   {
     id: '1',
-    title: 'Morning Medication',
-    description: 'Take your morning vitamins',
-    time: '8:00 AM',
-    completed: true,
-    type: 'medication',
+    title: 'Dr. Schmitz',
+    description: 'Appointment',
+    time: '16:30',
+    completed: false,
+    type: 'appointment',
+    date: '20.04.2023',
   },
   {
     id: '2',
-    title: 'Log Symptoms',
-    description: 'Record any symptoms you experienced today',
-    time: '6:00 PM',
+    title: 'Track your Symptoms',
+    description: 'Reminder',
+    time: '',
     completed: false,
     type: 'symptom',
   },
   {
     id: '3',
-    title: 'Evening Medication',
-    description: 'Take your evening supplements',
-    time: '9:00 PM',
+    title: 'Take your Medication',
+    description: 'Reminder',
+    time: '',
     completed: false,
     type: 'medication',
   },
-  {
-    id: '4',
-    title: 'Upcoming Appointment',
-    description: 'Annual checkup with Dr. Johnson',
-    time: '10:00 AM',
-    completed: false,
-    type: 'appointment',
-  },
 ];
+
+// Week progress data matching Figma design
+export const dummyWeekProgress = {
+  symptomsTracked: 6,
+  symptomsTotal: 7,
+  medicationsTaken: 4,
+  medicationsTotal: 7,
+};

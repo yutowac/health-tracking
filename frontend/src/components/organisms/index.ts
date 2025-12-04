@@ -8,3 +8,5 @@ export { HealthOverview } from './HealthOverview';
 export { TimelineSection } from './TimelineSection';
 export { AwardSection } from './AwardSection';
 export { CalendarView } from './CalendarView';
+export { DashboardOverview } from './DashboardOverview';
+export { MedicalInfoCard } from './MedicalInfoCard';
