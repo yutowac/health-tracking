@@ -48,7 +48,7 @@ type ScreenRenderer = (ctx: ScreenContext, data: ScreenData) => React.ReactNode;
 
 export const SCREEN_REGISTRY: Record<ScreenType, ScreenRenderer> = {
   dashboard: (ctx, data) => (
-    <div className="px-[26px] pt-[20px] pb-[30px] space-y-[30px]">
+    <div className="px-[26px] pt-[52px] pb-[62px] space-y-[30px]">
       {/* Search bar */}
       <div className="flex gap-3">
         <button

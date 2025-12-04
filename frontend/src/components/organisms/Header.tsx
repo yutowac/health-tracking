@@ -19,7 +19,7 @@ export const Header: React.FC<HeaderProps> = ({
   onBackClick = () => {},
 }) => {
   return (
-    <header className="bg-neutral-background px-4 pt-12 pb-4">
+    <header className="bg-neutral-background px-[26px] pt-12 pb-6">
       <div className="flex items-center justify-between max-w-md mx-auto">
         <div className="flex items-center gap-2">
           {showBackButton && (
