@@ -28,7 +28,7 @@ export const MedicationSection: React.FC<MedicationSectionProps> = ({
       <div className="flex items-center justify-between mb-[20px]">
         <div>
           <h2 className="text-[16px] leading-[1.3] font-semibold text-primary-dark">{title}</h2>
-          <p className="text-sm text-gray-500">
+          <p className="text-[13px] font-medium text-primary-dark">
             {takenCount} of {medications.length} taken
           </p>
         </div>

@@ -39,7 +39,7 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = ({
                   : 'text-gray-400 hover:text-primary'
               }`}
             >
-              <Icon size={24} />
+              <Icon size={22} strokeWidth={2} />
             </button>
           );
         })}
