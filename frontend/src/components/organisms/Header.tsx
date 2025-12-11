@@ -31,7 +31,7 @@ export const Header: React.FC<HeaderProps> = ({
               <ArrowLeft size={24} className="text-primary-dark" />
             </button>
           )}
-          <h1 className="text-3xl font-extrabold text-primary-dark">{title}</h1>
+          <h1 className="text-[28px] leading-[1.2] font-extrabold text-primary-dark">{title}</h1>
         </div>
         {/* 3D Avatar illustration placeholder */}
         <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-yellow-200 via-orange-200 to-green-200 flex items-center justify-center overflow-hidden shadow-md">
