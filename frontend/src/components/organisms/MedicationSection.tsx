@@ -49,7 +49,7 @@ export const MedicationSection: React.FC<MedicationSectionProps> = ({
           />
         ))}
         {medications.length === 0 && (
-          <p className="text-center text-gray-500 py-4">No medications scheduled</p>
+          <p className="text-center text-text-muted py-4">No medications scheduled</p>
         )}
       </div>
     </section>

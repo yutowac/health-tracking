@@ -22,19 +22,19 @@ export const AppointmentCard: React.FC<AppointmentCardProps> = ({
     <Card onClick={onClick} padding="xl" className="transition-shadow">
       {/* Doctor name and specialty */}
       <h3 className="text-[18px] leading-[1.3] font-bold text-primary-dark mb-2">{appointment.doctor}</h3>
-      <p className="text-[14px] leading-[1.4] text-gray-500 mb-4">{appointment.specialty}</p>
+      <p className="text-[14px] leading-[1.4] text-neutral-dark mb-4">{appointment.specialty}</p>
       
       {/* Contact info */}
-      <div className="flex items-center gap-3 text-[13px] text-gray-500 mb-5">
+      <div className="flex items-center gap-3 text-[13px] text-neutral-dark mb-5">
         {appointment.email && (
           <div className="flex items-center gap-1.5">
-            <Mail size={14} className="text-gray-400" />
+            <Mail size={14} className="text-text-muted" />
             <span>{appointment.email}</span>
           </div>
         )}
         {appointment.phone && (
           <div className="flex items-center gap-1.5">
-            <Phone size={14} className="text-gray-400" />
+            <Phone size={14} className="text-text-muted" />
             <span>{appointment.phone}</span>
           </div>
         )}
@@ -43,18 +43,18 @@ export const AppointmentCard: React.FC<AppointmentCardProps> = ({
       {/* Date and Time */}
       <div className="flex gap-6 mb-5">
         <div>
-          <p className="text-[11px] uppercase tracking-wide text-gray-400 mb-1">Date</p>
+          <p className="text-[11px] uppercase tracking-wide text-text-muted mb-1">Date</p>
           <p className="text-[15px] leading-[1.4] font-semibold text-primary-dark">{appointment.date}</p>
         </div>
         <div>
-          <p className="text-[11px] uppercase tracking-wide text-gray-400 mb-1">Time</p>
+          <p className="text-[11px] uppercase tracking-wide text-text-muted mb-1">Time</p>
           <p className="text-[15px] leading-[1.4] font-semibold text-primary-dark">{appointment.time}</p>
         </div>
       </div>
       
       {/* Address */}
       <div className="mb-5">
-        <p className="text-[11px] uppercase tracking-wide text-gray-400 mb-1">Address</p>
+        <p className="text-[11px] uppercase tracking-wide text-text-muted mb-1">Address</p>
         <p className="text-[15px] leading-[1.4] font-semibold text-primary-dark mb-1">{appointment.location}</p>
         <button
           type="button"
@@ -71,21 +71,21 @@ export const AppointmentCard: React.FC<AppointmentCardProps> = ({
         <button
           type="button"
           onClick={(e) => { e.stopPropagation(); onEmailClick(); }}
-          className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors"
+          className="w-10 h-10 rounded-full bg-primary-light flex items-center justify-center hover:bg-primary-light/80 transition-colors"
         >
           <Mail size={18} className="text-primary" />
         </button>
         <button
           type="button"
           onClick={(e) => { e.stopPropagation(); onPhoneClick(); }}
-          className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors"
+          className="w-10 h-10 rounded-full bg-primary-light flex items-center justify-center hover:bg-primary-light/80 transition-colors"
         >
           <Phone size={18} className="text-primary" />
         </button>
         <button
           type="button"
           onClick={(e) => { e.stopPropagation(); onEditClick(); }}
-          className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors"
+          className="w-10 h-10 rounded-full bg-primary-light flex items-center justify-center hover:bg-primary-light/80 transition-colors"
         >
           <Pencil size={18} className="text-primary" />
         </button>

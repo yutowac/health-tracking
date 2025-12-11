@@ -1,23 +1,47 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #0098ff;
-  --color-primary-dark: #003f5f;
-  --color-primary-light: #f1f5ff;
-  --color-secondary: #f273b1;
+  /* Primary colors - iOS-like blue */
+  --color-primary: #007aff;
+  --color-primary-dark: #0b2443;
+  --color-primary-light: #eef3ff;
+  
+  /* Secondary colors - vibrant pink/magenta */
+  --color-secondary: #ff5fa2;
   --color-secondary-dark: #4c3bb2;
-  --color-accent-pink: #f273b1;
-  --color-accent-blue: #0098ff;
-  --color-accent-purple: #4c3bb2;
-  --color-neutral-background: #f1f5ff;
-  --color-neutral-dark: #16163b;
-  --color-neutral-text: #003f5f;
-  --color-error: #de3730;
-  --color-gold: #ffb423;
-  --color-silver: #87a0b4;
-  --color-bronze: #c27b3b;
-  --shadow-card: 0 4px 6px -1px rgba(0, 152, 255, 0.1), 0 2px 4px -1px rgba(0, 152, 255, 0.06);
-  --shadow-blue: 0 4px 14px 0 rgba(0, 152, 255, 0.39);
+  
+  /* Accent colors */
+  --color-accent-pink: #ff5fa2;
+  --color-accent-blue: #007aff;
+  --color-accent-purple: #6b5ce7;
+  --color-accent-purple-light: #8b7cf7;
+  
+  /* Medication green */
+  --color-medication-green: #34c759;
+  --color-medication-green-light: #e8f9ed;
+  
+  /* Week card gradient */
+  --color-week-purple-start: #5b4cc4;
+  --color-week-purple-end: #8b7cf7;
+  
+  /* Neutral colors */
+  --color-neutral-background: #eef3ff;
+  --color-neutral-dark: #4f5f7a;
+  --color-neutral-text: #0b2443;
+  --color-text-muted: #9aa6c0;
+  
+  /* Status colors */
+  --color-error: #ff3b30;
+  --color-success: #34c759;
+  
+  /* Award colors */
+  --color-gold: #ffcc00;
+  --color-silver: #8e8e93;
+  --color-bronze: #cd7f32;
+  
+  /* Shadows */
+  --shadow-card: 0 10px 30px rgba(0, 31, 77, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  --shadow-blue: 0 4px 14px 0 rgba(0, 122, 255, 0.35);
 }
 
 * {
@@ -28,8 +52,8 @@
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background-color: #f1f5ff;
-  color: #003f5f;
+  background-color: #eef3ff;
+  color: #0b2443;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

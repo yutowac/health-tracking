@@ -23,23 +23,23 @@ export const MedicalInfoCard: React.FC<MedicalInfoCardProps> = ({
         {/* Basic Info */}
         <div className="space-y-2 mb-6">
           <div className="flex">
-            <span className="text-sm text-gray-500 w-28">Gender:</span>
+            <span className="text-sm text-neutral-dark w-28">Gender:</span>
             <span className="text-sm font-medium text-primary-dark">{medicalInfo.gender}</span>
           </div>
           <div className="flex">
-            <span className="text-sm text-gray-500 w-28">Birthday:</span>
+            <span className="text-sm text-neutral-dark w-28">Birthday:</span>
             <span className="text-sm font-medium text-primary-dark">{medicalInfo.birthday}</span>
           </div>
           <div className="flex">
-            <span className="text-sm text-gray-500 w-28">Height:</span>
+            <span className="text-sm text-neutral-dark w-28">Height:</span>
             <span className="text-sm font-medium text-primary-dark">{medicalInfo.height}</span>
           </div>
           <div className="flex">
-            <span className="text-sm text-gray-500 w-28">Weight:</span>
+            <span className="text-sm text-neutral-dark w-28">Weight:</span>
             <span className="text-sm font-medium text-primary-dark">{medicalInfo.weight}</span>
           </div>
           <div className="flex">
-            <span className="text-sm text-gray-500 w-28">Blood Group:</span>
+            <span className="text-sm text-neutral-dark w-28">Blood Group:</span>
             <span className="text-sm font-medium text-primary-dark">{medicalInfo.bloodGroup}</span>
           </div>
         </div>
@@ -50,7 +50,7 @@ export const MedicalInfoCard: React.FC<MedicalInfoCardProps> = ({
           <div className="space-y-2">
             {medicalInfo.vaccinations.map((vax, index) => (
               <div key={index} className="flex">
-                <span className="text-sm text-gray-500 w-28">{vax.name}:</span>
+                <span className="text-sm text-neutral-dark w-28">{vax.name}:</span>
                 <span className="text-sm font-medium text-primary-dark">{vax.date}</span>
               </div>
             ))}
@@ -63,7 +63,7 @@ export const MedicalInfoCard: React.FC<MedicalInfoCardProps> = ({
           <div className="space-y-2">
             {medicalInfo.priorSurgeries.map((surgery, index) => (
               <div key={index} className="flex">
-                <span className="text-sm text-gray-500 w-28">{surgery.name}</span>
+                <span className="text-sm text-neutral-dark w-28">{surgery.name}</span>
                 <span className="text-sm font-medium text-primary-dark">{surgery.date}</span>
               </div>
             ))}
@@ -98,14 +98,14 @@ export const MedicalInfoCard: React.FC<MedicalInfoCardProps> = ({
           <button
             type="button"
             onClick={onEmailClick}
-            className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors"
+            className="w-12 h-12 rounded-xl bg-primary-light flex items-center justify-center hover:bg-primary-light/80 transition-colors"
           >
             <Mail size={20} className="text-primary" />
           </button>
           <button
             type="button"
             onClick={onEditClick}
-            className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors"
+            className="w-12 h-12 rounded-xl bg-primary-light flex items-center justify-center hover:bg-primary-light/80 transition-colors"
           >
             <Pencil size={20} className="text-primary" />
           </button>

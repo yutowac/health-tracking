@@ -40,7 +40,7 @@ export const AppointmentSection: React.FC<AppointmentSectionProps> = ({
           />
         ))}
         {appointments.length === 0 && (
-          <p className="text-center text-gray-500 py-4">No upcoming appointments</p>
+          <p className="text-center text-text-muted py-4">No upcoming appointments</p>
         )}
       </div>
     </section>

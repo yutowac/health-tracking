@@ -29,9 +29,9 @@ export const MedicationCard: React.FC<MedicationCardProps> = ({
         </div>
         
         {/* Right side - Medication image placeholder */}
-        <div className="w-24 h-20 bg-gradient-to-br from-green-100 to-green-200 rounded-[16px] flex items-center justify-center">
+        <div className="w-24 h-20 bg-gradient-to-br from-medication-green-light to-medication-green/30 rounded-[16px] flex items-center justify-center">
           <div className="text-center">
-            <div className="text-[11px] font-bold text-green-700 uppercase tracking-wide">{medication.name}</div>
+            <div className="text-[11px] font-bold text-medication-green uppercase tracking-wide">{medication.name}</div>
           </div>
         </div>
       </div>

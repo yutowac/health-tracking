@@ -52,7 +52,7 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
                   cy="18"
                   r="14"
                   fill="none"
-                  stroke="#0098ff"
+                  stroke="#007aff"
                   strokeWidth="4"
                   strokeDasharray={`${progressPercentage * 0.88} 88`}
                   strokeLinecap="round"
@@ -113,7 +113,7 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
                     className="w-full text-left bg-white rounded-lg p-2 shadow-sm hover:shadow-md transition-shadow"
                   >
                     <p className="text-primary-dark font-medium text-xs truncate">{news.title}</p>
-                    <p className="text-gray-500 text-[10px] truncate">{news.summary}</p>
+                    <p className="text-text-muted text-[10px] truncate">{news.summary}</p>
                   </button>
                 ))}
               </div>
