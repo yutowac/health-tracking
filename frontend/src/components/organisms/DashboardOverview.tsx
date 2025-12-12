@@ -28,7 +28,7 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
     <div>
       <div className="bg-gradient-to-br from-[#e8f0ff] via-[#f0e8ff] to-[#ffe8f4] rounded-[28px] p-7 shadow-[0_12px_40px_rgba(0,31,77,0.1),0_4px_12px_rgba(0,0,0,0.05)]">
         <div className="flex gap-6">
-          <div className="flex-1 bg-white/80 backdrop-blur-sm rounded-[22px] p-6 shadow-[0_8px_24px_rgba(11,36,67,0.08)]">
+          <div className="flex-[1.3] bg-white/80 backdrop-blur-sm rounded-[22px] p-6 shadow-[0_8px_24px_rgba(11,36,67,0.08)]">
             <div className="flex items-start justify-between mb-4">
               <h3 className="text-primary-dark font-semibold text-[15px]">Your week</h3>
               <button
