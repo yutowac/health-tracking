@@ -40,8 +40,8 @@ export const SearchResultsScreen: React.FC<SearchResultsScreenProps> = ({
 
   return (
     <ScreenContainer>
-      <header className="bg-neutral-background px-[26px] pt-[20px] pb-5">
-        <div className="flex items-center gap-4 max-w-md mx-auto">
+      <header className="bg-neutral-background px-8 pt-6 pb-6">
+        <div className="flex items-center gap-4 max-w-[360px] mx-auto">
           <button type="button" onClick={onBackClick} className="p-1.5">
             <ArrowLeft size={26} className="text-primary-dark" />
           </button>
@@ -53,14 +53,14 @@ export const SearchResultsScreen: React.FC<SearchResultsScreenProps> = ({
       </header>
 
       {/* Search results */}
-      <main className="max-w-md mx-auto px-[26px] pt-6 pb-[140px]">
-        <p className="text-sm text-neutral-dark mb-6">{totalResults} results found</p>
+      <main className="max-w-[360px] mx-auto px-8 pt-8 pb-[160px]">
+        <p className="text-sm text-neutral-dark mb-8">{totalResults} results found</p>
 
         {/* Appointments */}
         {appointments.length > 0 && (
-          <div className="mb-10">
-            <h2 className="text-[18px] font-semibold text-primary-dark mb-6">Appointments</h2>
-            <div className="space-y-6">
+          <div className="mb-12">
+            <h2 className="text-[18px] font-semibold text-primary-dark mb-8">Appointments</h2>
+            <div className="space-y-8">
               {appointments.map((appointment) => (
                 <AppointmentCard
                   key={appointment.id}
@@ -74,9 +74,9 @@ export const SearchResultsScreen: React.FC<SearchResultsScreenProps> = ({
 
         {/* Medications */}
         {medications.length > 0 && (
-          <div className="mb-10">
-            <h2 className="text-[18px] font-semibold text-primary-dark mb-6">Medications</h2>
-            <div className="space-y-6">
+          <div className="mb-12">
+            <h2 className="text-[18px] font-semibold text-primary-dark mb-8">Medications</h2>
+            <div className="space-y-8">
               {medications.map((medication) => (
                 <MedicationCard
                   key={medication.id}
@@ -90,9 +90,9 @@ export const SearchResultsScreen: React.FC<SearchResultsScreenProps> = ({
 
         {/* Symptoms */}
         {symptoms.length > 0 && (
-          <div className="mb-10">
-            <h2 className="text-[18px] font-semibold text-primary-dark mb-6">Symptoms</h2>
-            <div className="space-y-6">
+          <div className="mb-12">
+            <h2 className="text-[18px] font-semibold text-primary-dark mb-8">Symptoms</h2>
+            <div className="space-y-8">
               {symptoms.map((symptom) => (
                 <SymptomCard
                   key={symptom.id}
@@ -106,9 +106,9 @@ export const SearchResultsScreen: React.FC<SearchResultsScreenProps> = ({
 
         {/* News */}
         {newsItems.length > 0 && (
-          <div className="mb-10">
-            <h2 className="text-[18px] font-semibold text-primary-dark mb-6">News</h2>
-            <div className="space-y-6">
+          <div className="mb-12">
+            <h2 className="text-[18px] font-semibold text-primary-dark mb-8">News</h2>
+            <div className="space-y-8">
               {newsItems.map((item) => (
                 <Card
                   key={item.id}

@@ -20,8 +20,8 @@ export const SearchScreen: React.FC<SearchScreenProps> = ({
 
   return (
     <ScreenContainer>
-      <header className="bg-neutral-background px-[26px] pt-[20px] pb-5">
-        <div className="flex items-center gap-4 max-w-md mx-auto">
+      <header className="bg-neutral-background px-8 pt-6 pb-6">
+        <div className="flex items-center gap-4 max-w-[360px] mx-auto">
           <button type="button" onClick={onBackClick} className="p-1.5">
             <ArrowLeft size={26} className="text-primary-dark" />
           </button>
@@ -37,9 +37,9 @@ export const SearchScreen: React.FC<SearchScreenProps> = ({
         </div>
       </header>
 
-      <main className="max-w-md mx-auto px-[26px] pt-6 pb-[140px]">
-        <h2 className="text-[18px] font-semibold text-primary-dark mb-6">Recent Searches</h2>
-        <div className="space-y-5">
+      <main className="max-w-[360px] mx-auto px-8 pt-8 pb-[160px]">
+        <h2 className="text-[18px] font-semibold text-primary-dark mb-8">Recent Searches</h2>
+        <div className="space-y-6">
           {recentSearches.map((search, index) => (
             <button
               key={index}
@@ -54,7 +54,7 @@ export const SearchScreen: React.FC<SearchScreenProps> = ({
         </div>
 
         {/* Search categories */}
-        <h2 className="text-[18px] font-semibold text-primary-dark mt-12 mb-6">Categories</h2>
+        <h2 className="text-[18px] font-semibold text-primary-dark mt-14 mb-8">Categories</h2>
         <div className="grid grid-cols-2 gap-6">
           {['Medications', 'Symptoms', 'Appointments', 'News'].map((category) => (
             <button

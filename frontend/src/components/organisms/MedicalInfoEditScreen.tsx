@@ -38,9 +38,9 @@ export const MedicalInfoEditScreen: React.FC<MedicalInfoEditScreenProps> = ({
         variant="secondary"
       />
 
-      <main className="max-w-md mx-auto px-[26px] pt-6 pb-[140px]">
-        <Card padding="xl">
-          <div className="space-y-6 mb-10">
+      <main className="max-w-[360px] mx-auto px-8 pt-8 pb-[160px]">
+        <Card padding="xl" className="p-8">
+          <div className="space-y-7 mb-12">
             <div>
               <label className={labelClassName}>Name</label>
               <input
@@ -104,7 +104,7 @@ export const MedicalInfoEditScreen: React.FC<MedicalInfoEditScreenProps> = ({
             </div>
           </div>
 
-          <div className="mb-10">
+          <div className="mb-12">
             <label className={sectionLabelClassName}>Allergies</label>
             <input
               type="text"
@@ -117,7 +117,7 @@ export const MedicalInfoEditScreen: React.FC<MedicalInfoEditScreenProps> = ({
           <div>
             <label className={sectionLabelClassName}>Emergency Contact</label>
             {medicalInfo.emergencyContacts.map((contact, index) => (
-              <div key={index} className="space-y-4 p-6 bg-primary-light/20 rounded-2xl border border-primary-light">
+              <div key={index} className="space-y-5 p-7 bg-primary-light/20 rounded-2xl border border-primary-light">
                 <input
                   type="text"
                   defaultValue={contact.name}

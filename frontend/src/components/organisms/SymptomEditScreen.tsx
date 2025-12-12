@@ -39,9 +39,9 @@ export const SymptomEditScreen: React.FC<SymptomEditScreenProps> = ({
         variant="secondary"
       />
 
-      <main className="max-w-md mx-auto px-[26px] pt-6 pb-[140px]">
-        <Card padding="xl">
-          <div className="space-y-6">
+      <main className="max-w-[360px] mx-auto px-8 pt-8 pb-[160px]">
+        <Card padding="xl" className="p-8">
+          <div className="space-y-7">
             <div>
               <label className={labelClassName}>Symptom Name</label>
               <input
