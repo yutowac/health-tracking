@@ -17,9 +17,9 @@ export const UploadScreen: React.FC<UploadScreenProps> = ({
       <ScreenHeader title="Upload" onBackClick={onBackClick} />
 
       {/* Upload area */}
-      <main className="max-w-md mx-auto px-[26px] pt-6 pb-[140px]">
+      <main className="max-w-[360px] mx-auto px-8 pt-8 pb-[160px]">
         <Card className="rounded-[24px]" padding="xl">
-          <div className="flex flex-col items-center py-10">
+          <div className="flex flex-col items-center py-12">
             <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mb-6">
               <Upload size={44} className="text-primary" />
             </div>
@@ -38,9 +38,9 @@ export const UploadScreen: React.FC<UploadScreenProps> = ({
         </Card>
 
         {/* Supported formats */}
-        <div className="mt-10">
-          <h3 className="text-sm font-semibold text-neutral-dark mb-6">Supported Formats</h3>
-          <div className="grid grid-cols-3 gap-6">
+        <div className="mt-12">
+          <h3 className="text-sm font-semibold text-neutral-dark mb-8">Supported Formats</h3>
+          <div className="grid grid-cols-3 gap-5">
             <div className="bg-white rounded-[20px] p-6 flex flex-col items-center shadow-card">
               <FileText size={28} className="text-primary mb-4" />
               <span className="text-xs text-neutral-dark">PDF</span>
@@ -57,8 +57,8 @@ export const UploadScreen: React.FC<UploadScreenProps> = ({
         </div>
 
         {/* Recent uploads */}
-        <div className="mt-10">
-          <h3 className="text-sm font-semibold text-neutral-dark mb-6">Recent Uploads</h3>
+        <div className="mt-12">
+          <h3 className="text-sm font-semibold text-neutral-dark mb-8">Recent Uploads</h3>
           <Card className="rounded-[24px]" padding="xl">
             <p className="text-center text-text-muted py-6">No recent uploads</p>
           </Card>

@@ -46,8 +46,8 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = ({
       <ScreenHeader title="Settings" onBackClick={onBackClick} />
 
       {/* User info */}
-      <main className="max-w-md mx-auto px-[26px] pt-6 pb-[140px]">
-        <div className="bg-white rounded-[24px] p-6 mb-10 flex items-center gap-6 shadow-card">
+      <main className="max-w-[360px] mx-auto px-8 pt-8 pb-[160px]">
+        <div className="bg-white rounded-[24px] p-7 mb-12 flex items-center gap-6 shadow-card">
           <div className="w-18 h-18 bg-gradient-to-br from-primary to-accent-pink rounded-full flex items-center justify-center" style={{ width: '72px', height: '72px' }}>
             <span className="text-2xl font-bold text-white">
               {userName.split(' ').map(n => n[0]).join('')}
@@ -61,8 +61,8 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = ({
 
         {/* Settings groups */}
         {settingsGroups.map((group) => (
-          <div key={group.title} className="mb-10">
-            <h3 className="text-sm font-semibold text-neutral-dark mb-5 px-1">{group.title}</h3>
+          <div key={group.title} className="mb-12">
+            <h3 className="text-sm font-semibold text-neutral-dark mb-6 px-1">{group.title}</h3>
             <div className="bg-white rounded-[24px] overflow-hidden shadow-card">
               {group.items.map((item, index) => (
                 <button

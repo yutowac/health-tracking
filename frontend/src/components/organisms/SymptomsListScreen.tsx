@@ -31,9 +31,9 @@ export const SymptomsListScreen: React.FC<SymptomsListScreenProps> = ({
     <ScreenContainer>
       <ScreenHeader title="Symptoms" onBackClick={onBackClick} rightSlot={addButton} />
 
-      <main className="max-w-md mx-auto px-[26px] pt-6 pb-[140px]">
-        <p className="text-sm text-neutral-dark mb-6">{symptoms.length} symptoms tracked</p>
-        <div className="space-y-6">
+      <main className="max-w-[360px] mx-auto px-8 pt-8 pb-[160px]">
+        <p className="text-sm text-neutral-dark mb-8">{symptoms.length} symptoms tracked</p>
+        <div className="space-y-8">
           {symptoms.map((symptom) => (
             <SymptomCard
               key={symptom.id}

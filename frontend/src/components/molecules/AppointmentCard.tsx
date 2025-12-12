@@ -19,13 +19,13 @@ export const AppointmentCard: React.FC<AppointmentCardProps> = ({
   onEditClick = () => {},
 }) => {
   return (
-    <Card onClick={onClick} padding="xl" className="transition-shadow">
+    <Card onClick={onClick} padding="xl" className="transition-shadow p-7">
       {/* Doctor name and specialty */}
-      <h3 className="text-xl font-bold text-primary-dark mb-2">{appointment.doctor}</h3>
-      <p className="text-sm text-neutral-dark mb-6">{appointment.specialty}</p>
+      <h3 className="text-xl font-bold text-primary-dark mb-3">{appointment.doctor}</h3>
+      <p className="text-sm text-neutral-dark mb-7">{appointment.specialty}</p>
       
       {/* Contact info */}
-      <div className="flex items-center gap-5 text-[13px] text-neutral-dark mb-6">
+      <div className="flex items-center gap-5 text-[13px] text-neutral-dark mb-7">
         {appointment.email && (
           <div className="flex items-center gap-2">
             <Mail size={15} className="text-text-muted" />
@@ -41,21 +41,21 @@ export const AppointmentCard: React.FC<AppointmentCardProps> = ({
       </div>
       
       {/* Date and Time */}
-      <div className="flex gap-10 mb-6">
+      <div className="flex gap-12 mb-7">
         <div>
-          <p className="text-[11px] uppercase tracking-wide text-text-muted mb-2">Date</p>
+          <p className="text-[11px] uppercase tracking-wide text-text-muted mb-3">Date</p>
           <p className="text-base font-semibold text-primary-dark">{appointment.date}</p>
         </div>
         <div>
-          <p className="text-[11px] uppercase tracking-wide text-text-muted mb-2">Time</p>
+          <p className="text-[11px] uppercase tracking-wide text-text-muted mb-3">Time</p>
           <p className="text-base font-semibold text-primary-dark">{appointment.time}</p>
         </div>
       </div>
       
       {/* Address */}
-      <div className="mb-6">
-        <p className="text-[11px] uppercase tracking-wide text-text-muted mb-2">Address</p>
-        <p className="text-base font-semibold text-primary-dark mb-3">{appointment.location}</p>
+      <div className="mb-7">
+        <p className="text-[11px] uppercase tracking-wide text-text-muted mb-3">Address</p>
+        <p className="text-base font-semibold text-primary-dark mb-4">{appointment.location}</p>
         <button
           type="button"
           className="flex items-center gap-1.5 text-[13px] text-primary font-medium hover:underline"
