@@ -23,7 +23,7 @@ export const AppointmentSection: React.FC<AppointmentSectionProps> = ({
   return (
     <section>
       <div className="flex items-center justify-between mb-[20px]">
-        <h2 className="text-lg font-semibold text-neutral-dark">{title}</h2>
+        <h2 className="text-[16px] leading-[1.3] font-semibold text-primary-dark">{title}</h2>
         <button
           onClick={onViewAll}
           className="flex items-center gap-1 text-sm text-primary font-medium hover:underline"
@@ -40,7 +40,7 @@ export const AppointmentSection: React.FC<AppointmentSectionProps> = ({
           />
         ))}
         {appointments.length === 0 && (
-          <p className="text-center text-gray-500 py-4">No upcoming appointments</p>
+          <p className="text-center text-text-muted py-4">No upcoming appointments</p>
         )}
       </div>
     </section>

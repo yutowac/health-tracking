@@ -18,7 +18,7 @@ export const AwardSection: React.FC<AwardSectionProps> = ({
   if (!featuredAward) {
     return (
       <section className="px-4 py-3">
-        <p className="text-center text-gray-500 py-8">No badges earned yet</p>
+        <p className="text-center text-text-muted py-8">No badges earned yet</p>
       </section>
     );
   }
@@ -29,7 +29,7 @@ export const AwardSection: React.FC<AwardSectionProps> = ({
       case 'gold':
         return 'from-yellow-300 via-yellow-400 to-yellow-500';
       case 'silver':
-        return 'from-gray-300 via-gray-400 to-gray-500';
+        return 'from-silver via-silver to-silver';
       case 'bronze':
         return 'from-orange-300 via-orange-400 to-orange-500';
       default:
@@ -62,7 +62,7 @@ export const AwardSection: React.FC<AwardSectionProps> = ({
         
         <Card className="rounded-[24px] pt-6">
           <h3 className="text-xl font-bold text-primary-dark mb-3">{featuredAward.name}</h3>
-          <p className="text-base text-gray-600 leading-relaxed">{featuredAward.description}</p>
+          <p className="text-base text-neutral-dark leading-relaxed">{featuredAward.description}</p>
         </Card>
       </div>
     </section>

@@ -36,10 +36,10 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = ({
               className={`p-2 rounded-xl transition-all duration-200 ${
                 isActive
                   ? 'text-primary bg-primary/10'
-                  : 'text-gray-400 hover:text-primary'
+                  : 'text-text-muted hover:text-primary'
               }`}
             >
-              <Icon size={24} />
+              <Icon size={22} strokeWidth={2} />
             </button>
           );
         })}

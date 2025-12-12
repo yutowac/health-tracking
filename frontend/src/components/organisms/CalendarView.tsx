@@ -79,7 +79,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
       
       <div className="grid grid-cols-7 gap-1 mb-2">
         {dayNames.map((day) => (
-          <div key={day} className="text-center text-xs font-medium text-gray-500 py-2">
+          <div key={day} className="text-center text-xs font-medium text-neutral-dark py-2">
             {day}
           </div>
         ))}
@@ -96,7 +96,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
               ${!day ? 'invisible' : ''}
               ${isSelected(day!) ? 'bg-primary text-white' : ''}
               ${isToday(day!) && !isSelected(day!) ? 'bg-primary/10 text-primary' : ''}
-              ${!isSelected(day!) && !isToday(day!) && day ? 'hover:bg-gray-100 text-neutral-dark' : ''}
+              ${!isSelected(day!) && !isToday(day!) && day ? 'hover:bg-primary-light text-neutral-dark' : ''}
             `}
           >
             {day}

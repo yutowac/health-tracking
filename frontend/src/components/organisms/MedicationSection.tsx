@@ -27,8 +27,8 @@ export const MedicationSection: React.FC<MedicationSectionProps> = ({
     <section>
       <div className="flex items-center justify-between mb-[20px]">
         <div>
-          <h2 className="text-lg font-semibold text-neutral-dark">{title}</h2>
-          <p className="text-sm text-gray-500">
+          <h2 className="text-[16px] leading-[1.3] font-semibold text-primary-dark">{title}</h2>
+          <p className="text-[13px] font-medium text-primary-dark">
             {takenCount} of {medications.length} taken
           </p>
         </div>
@@ -49,7 +49,7 @@ export const MedicationSection: React.FC<MedicationSectionProps> = ({
           />
         ))}
         {medications.length === 0 && (
-          <p className="text-center text-gray-500 py-4">No medications scheduled</p>
+          <p className="text-center text-text-muted py-4">No medications scheduled</p>
         )}
       </div>
     </section>

@@ -25,13 +25,13 @@ export const Header: React.FC<HeaderProps> = ({
   onSearchClick = () => {},
 }) => {
   return (
-    <header className="bg-neutral-background border-b border-gray-200 px-4 py-3 sticky top-0 z-50">
+    <header className="bg-neutral-background border-b border-primary-light px-4 py-3 sticky top-0 z-50">
       <div className="flex items-center justify-between max-w-7xl mx-auto">
         <div className="flex items-center gap-3">
           <button
             type="button"
             onClick={onMenuClick}
-            className="p-2 rounded-full hover:bg-gray-100 transition-colors lg:hidden"
+            className="p-2 rounded-full hover:bg-primary-light transition-colors lg:hidden"
             aria-label="Menu"
           >
             <Menu size={24} className="text-neutral-dark" />
@@ -39,7 +39,7 @@ export const Header: React.FC<HeaderProps> = ({
           <div>
             <h1 className="text-xl font-bold text-neutral-dark">{title}</h1>
             {userName && (
-              <p className="text-sm text-gray-500">Welcome back, {userName}</p>
+              <p className="text-sm text-neutral-dark">Welcome back, {userName}</p>
             )}
           </div>
         </div>
@@ -49,7 +49,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               type="button"
               onClick={onSearchClick}
-              className="p-2 rounded-full hover:bg-gray-100 transition-colors"
+              className="p-2 rounded-full hover:bg-primary-light transition-colors"
               aria-label="Search"
             >
               <Search size={24} className="text-neutral-dark" />
@@ -59,7 +59,7 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             type="button"
             onClick={onNotificationClick}
-            className="p-2 rounded-full hover:bg-gray-100 transition-colors relative"
+            className="p-2 rounded-full hover:bg-primary-light transition-colors relative"
             aria-label="Notifications"
           >
             <Bell size={24} className="text-neutral-dark" />

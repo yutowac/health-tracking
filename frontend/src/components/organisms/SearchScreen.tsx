@@ -26,7 +26,7 @@ export const SearchScreen: React.FC<SearchScreenProps> = ({
             <ArrowLeft size={24} className="text-primary-dark" />
           </button>
           <div className="flex-1 bg-white rounded-[20px] px-4 py-3 flex items-center gap-2 shadow-sm">
-            <Search size={20} className="text-gray-400" />
+            <Search size={20} className="text-text-muted" />
             <input
               type="text"
               placeholder="Search your records"
@@ -45,10 +45,10 @@ export const SearchScreen: React.FC<SearchScreenProps> = ({
             <button
               key={index}
               type="button"
-              className="w-full flex items-center gap-3 px-4 py-3 bg-white rounded-xl hover:bg-gray-50 transition-colors"
+              className="w-full flex items-center gap-3 px-4 py-3 bg-white rounded-xl hover:bg-primary-light transition-colors"
               onClick={() => onSearch(search)}
             >
-              <Clock size={18} className="text-gray-400" />
+              <Clock size={18} className="text-text-muted" />
               <span className="text-primary-dark">{search}</span>
             </button>
           ))}
@@ -61,7 +61,7 @@ export const SearchScreen: React.FC<SearchScreenProps> = ({
             <button
               key={category}
               type="button"
-              className="px-4 py-3 bg-white rounded-xl text-primary-dark font-medium hover:bg-gray-50 transition-colors"
+              className="px-4 py-3 bg-white rounded-xl text-primary-dark font-medium hover:bg-primary-light transition-colors"
             >
               {category}
             </button>

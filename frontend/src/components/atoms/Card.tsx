@@ -13,7 +13,7 @@ export const Card: React.FC<CardProps> = ({
   onClick,
   padding = 'md',
 }) => {
-  const baseStyles = 'bg-white rounded-2xl shadow-card';
+  const baseStyles = 'bg-white rounded-[24px] shadow-card';
   
   const paddingStyles = {
     none: '',
