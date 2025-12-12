@@ -36,7 +36,7 @@ export const YourWeekScreen: React.FC<YourWeekScreenProps> = ({
       <ScreenHeader title="Your Week" onBackClick={onBackClick} />
 
       {/* Progress wheel */}
-      <main className="max-w-[360px] mx-auto px-8 pt-8 pb-[160px]">
+      <main className="w-full max-w-md mx-auto px-5 pt-6 pb-[140px]">
         <Card className="rounded-[24px] mb-12" padding="xl">
           <div className="flex flex-col items-center py-4">
             <div className="relative w-48 h-48">

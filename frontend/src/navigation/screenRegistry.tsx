@@ -48,7 +48,7 @@ type ScreenRenderer = (ctx: ScreenContext, data: ScreenData) => React.ReactNode;
 
 export const SCREEN_REGISTRY: Record<ScreenType, ScreenRenderer> = {
   dashboard: (ctx, data) => (
-    <div className="max-w-[360px] mx-auto px-8 pt-8 pb-[160px] space-y-14">
+    <div className="w-full max-w-md mx-auto px-5 pt-6 pb-[140px] space-y-10">
       {/* Search bar */}
       <div className="flex gap-4">
         <button
@@ -110,7 +110,7 @@ export const SCREEN_REGISTRY: Record<ScreenType, ScreenRenderer> = {
   ),
 
   calendar: (_ctx, data) => (
-    <div className="max-w-[360px] mx-auto px-8 pt-8 pb-[160px]">
+    <div className="w-full max-w-md mx-auto px-5 pt-6 pb-[140px]">
       <CalendarView
         selectedDate={data.selectedDate}
         onDateSelect={data.setSelectedDate}

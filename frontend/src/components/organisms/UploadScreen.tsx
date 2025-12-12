@@ -17,7 +17,7 @@ export const UploadScreen: React.FC<UploadScreenProps> = ({
       <ScreenHeader title="Upload" onBackClick={onBackClick} />
 
       {/* Upload area */}
-      <main className="max-w-[360px] mx-auto px-8 pt-8 pb-[160px]">
+      <main className="w-full max-w-md mx-auto px-5 pt-6 pb-[140px]">
         <Card className="rounded-[24px]" padding="xl">
           <div className="flex flex-col items-center py-12">
             <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mb-6">

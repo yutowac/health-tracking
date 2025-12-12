@@ -40,8 +40,8 @@ export const SearchResultsScreen: React.FC<SearchResultsScreenProps> = ({
 
   return (
     <ScreenContainer>
-      <header className="bg-neutral-background px-8 pt-6 pb-6">
-        <div className="flex items-center gap-4 max-w-[360px] mx-auto">
+            <header className="bg-neutral-background px-5 pt-6 pb-6">
+              <div className="flex items-center gap-4 w-full max-w-md mx-auto">
           <button type="button" onClick={onBackClick} className="p-1.5">
             <ArrowLeft size={26} className="text-primary-dark" />
           </button>
@@ -53,7 +53,7 @@ export const SearchResultsScreen: React.FC<SearchResultsScreenProps> = ({
       </header>
 
       {/* Search results */}
-      <main className="max-w-[360px] mx-auto px-8 pt-8 pb-[160px]">
+      <main className="w-full max-w-md mx-auto px-5 pt-6 pb-[140px]">
         <p className="text-sm text-neutral-dark mb-8">{totalResults} results found</p>
 
         {/* Appointments */}

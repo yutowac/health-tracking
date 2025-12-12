@@ -38,7 +38,7 @@ export const MedicalInfoEditScreen: React.FC<MedicalInfoEditScreenProps> = ({
         variant="secondary"
       />
 
-      <main className="max-w-[360px] mx-auto px-8 pt-8 pb-[160px]">
+      <main className="w-full max-w-md mx-auto px-5 pt-6 pb-[140px]">
         <Card padding="xl" className="p-8">
           <div className="space-y-7 mb-12">
             <div>

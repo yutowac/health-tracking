@@ -46,7 +46,7 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = ({
       <ScreenHeader title="Settings" onBackClick={onBackClick} />
 
       {/* User info */}
-      <main className="max-w-[360px] mx-auto px-8 pt-8 pb-[160px]">
+      <main className="w-full max-w-md mx-auto px-5 pt-6 pb-[140px]">
         <div className="bg-white rounded-[24px] p-7 mb-12 flex items-center gap-6 shadow-card">
           <div className="w-18 h-18 bg-gradient-to-br from-primary to-accent-pink rounded-full flex items-center justify-center" style={{ width: '72px', height: '72px' }}>
             <span className="text-2xl font-bold text-white">
