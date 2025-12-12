@@ -22,8 +22,8 @@ export const AppointmentSection: React.FC<AppointmentSectionProps> = ({
 
   return (
     <section>
-      <div className="flex items-center justify-between mb-5">
-        <h2 className="text-lg font-semibold text-primary-dark">{title}</h2>
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-[18px] font-semibold text-primary-dark">{title}</h2>
         <button
           onClick={onViewAll}
           className="flex items-center gap-1 text-sm text-primary font-medium hover:underline"
@@ -31,7 +31,7 @@ export const AppointmentSection: React.FC<AppointmentSectionProps> = ({
           View all <ChevronRight size={18} />
         </button>
       </div>
-      <div className="space-y-5">
+      <div className="space-y-6">
         {displayedAppointments.map((appointment) => (
           <AppointmentCard
             key={appointment.id}

@@ -17,14 +17,14 @@ export const UploadScreen: React.FC<UploadScreenProps> = ({
       <ScreenHeader title="Upload" onBackClick={onBackClick} />
 
       {/* Upload area */}
-      <main className="max-w-md mx-auto px-[26px] pb-[120px]">
+      <main className="max-w-md mx-auto px-[26px] pt-6 pb-[140px]">
         <Card className="rounded-[24px]" padding="xl">
-          <div className="flex flex-col items-center py-8">
-            <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mb-5">
+          <div className="flex flex-col items-center py-10">
+            <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mb-6">
               <Upload size={44} className="text-primary" />
             </div>
-            <h2 className="text-xl font-bold text-primary-dark mb-3">Upload Documents</h2>
-            <p className="text-sm text-neutral-dark text-center mb-8">
+            <h2 className="text-xl font-bold text-primary-dark mb-4">Upload Documents</h2>
+            <p className="text-sm text-neutral-dark text-center mb-10">
               Upload your medical records, prescriptions, or test results
             </p>
             <button
@@ -38,29 +38,29 @@ export const UploadScreen: React.FC<UploadScreenProps> = ({
         </Card>
 
         {/* Supported formats */}
-        <div className="mt-8">
-          <h3 className="text-sm font-semibold text-neutral-dark mb-5">Supported Formats</h3>
-          <div className="grid grid-cols-3 gap-5">
-            <div className="bg-white rounded-[20px] p-5 flex flex-col items-center shadow-card">
-              <FileText size={28} className="text-primary mb-3" />
+        <div className="mt-10">
+          <h3 className="text-sm font-semibold text-neutral-dark mb-6">Supported Formats</h3>
+          <div className="grid grid-cols-3 gap-6">
+            <div className="bg-white rounded-[20px] p-6 flex flex-col items-center shadow-card">
+              <FileText size={28} className="text-primary mb-4" />
               <span className="text-xs text-neutral-dark">PDF</span>
             </div>
-            <div className="bg-white rounded-[20px] p-5 flex flex-col items-center shadow-card">
-              <Image size={28} className="text-primary mb-3" />
+            <div className="bg-white rounded-[20px] p-6 flex flex-col items-center shadow-card">
+              <Image size={28} className="text-primary mb-4" />
               <span className="text-xs text-neutral-dark">Images</span>
             </div>
-            <div className="bg-white rounded-[20px] p-5 flex flex-col items-center shadow-card">
-              <File size={28} className="text-primary mb-3" />
+            <div className="bg-white rounded-[20px] p-6 flex flex-col items-center shadow-card">
+              <File size={28} className="text-primary mb-4" />
               <span className="text-xs text-neutral-dark">Documents</span>
             </div>
           </div>
         </div>
 
         {/* Recent uploads */}
-        <div className="mt-8">
-          <h3 className="text-sm font-semibold text-neutral-dark mb-5">Recent Uploads</h3>
+        <div className="mt-10">
+          <h3 className="text-sm font-semibold text-neutral-dark mb-6">Recent Uploads</h3>
           <Card className="rounded-[24px]" padding="xl">
-            <p className="text-center text-text-muted py-5">No recent uploads</p>
+            <p className="text-center text-text-muted py-6">No recent uploads</p>
           </Card>
         </div>
       </main>

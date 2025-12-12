@@ -53,14 +53,14 @@ export const SearchResultsScreen: React.FC<SearchResultsScreenProps> = ({
       </header>
 
       {/* Search results */}
-      <main className="max-w-md mx-auto px-[26px] pb-[120px]">
-        <p className="text-sm text-neutral-dark mb-5">{totalResults} results found</p>
+      <main className="max-w-md mx-auto px-[26px] pt-6 pb-[140px]">
+        <p className="text-sm text-neutral-dark mb-6">{totalResults} results found</p>
 
         {/* Appointments */}
         {appointments.length > 0 && (
-          <div className="mb-8">
-            <h2 className="text-lg font-semibold text-primary-dark mb-5">Appointments</h2>
-            <div className="space-y-5">
+          <div className="mb-10">
+            <h2 className="text-[18px] font-semibold text-primary-dark mb-6">Appointments</h2>
+            <div className="space-y-6">
               {appointments.map((appointment) => (
                 <AppointmentCard
                   key={appointment.id}
@@ -74,9 +74,9 @@ export const SearchResultsScreen: React.FC<SearchResultsScreenProps> = ({
 
         {/* Medications */}
         {medications.length > 0 && (
-          <div className="mb-8">
-            <h2 className="text-lg font-semibold text-primary-dark mb-5">Medications</h2>
-            <div className="space-y-5">
+          <div className="mb-10">
+            <h2 className="text-[18px] font-semibold text-primary-dark mb-6">Medications</h2>
+            <div className="space-y-6">
               {medications.map((medication) => (
                 <MedicationCard
                   key={medication.id}
@@ -90,9 +90,9 @@ export const SearchResultsScreen: React.FC<SearchResultsScreenProps> = ({
 
         {/* Symptoms */}
         {symptoms.length > 0 && (
-          <div className="mb-8">
-            <h2 className="text-lg font-semibold text-primary-dark mb-5">Symptoms</h2>
-            <div className="space-y-5">
+          <div className="mb-10">
+            <h2 className="text-[18px] font-semibold text-primary-dark mb-6">Symptoms</h2>
+            <div className="space-y-6">
               {symptoms.map((symptom) => (
                 <SymptomCard
                   key={symptom.id}
@@ -106,9 +106,9 @@ export const SearchResultsScreen: React.FC<SearchResultsScreenProps> = ({
 
         {/* News */}
         {newsItems.length > 0 && (
-          <div className="mb-8">
-            <h2 className="text-lg font-semibold text-primary-dark mb-5">News</h2>
-            <div className="space-y-5">
+          <div className="mb-10">
+            <h2 className="text-[18px] font-semibold text-primary-dark mb-6">News</h2>
+            <div className="space-y-6">
               {newsItems.map((item) => (
                 <Card
                   key={item.id}

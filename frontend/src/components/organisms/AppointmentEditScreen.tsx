@@ -39,9 +39,9 @@ export const AppointmentEditScreen: React.FC<AppointmentEditScreenProps> = ({
         variant="secondary"
       />
 
-      <main className="max-w-md mx-auto px-[26px] pb-[120px]">
+      <main className="max-w-md mx-auto px-[26px] pt-6 pb-[140px]">
         <Card padding="xl">
-          <div className="space-y-5">
+          <div className="space-y-6">
             <div>
               <label className={labelClassName}>Doctor Name</label>
               <input

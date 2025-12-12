@@ -31,9 +31,9 @@ export const AppointmentListScreen: React.FC<AppointmentListScreenProps> = ({
     <ScreenContainer>
       <ScreenHeader title="Appointments" onBackClick={onBackClick} rightSlot={addButton} />
 
-      <main className="max-w-md mx-auto px-[26px] pb-[120px]">
-        <p className="text-sm text-neutral-dark mb-5">{appointments.length} appointments</p>
-        <div className="space-y-5">
+      <main className="max-w-md mx-auto px-[26px] pt-6 pb-[140px]">
+        <p className="text-sm text-neutral-dark mb-6">{appointments.length} appointments</p>
+        <div className="space-y-6">
           {appointments.map((appointment) => (
             <AppointmentCard
               key={appointment.id}
