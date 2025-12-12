@@ -19,13 +19,13 @@ export const MedicationListScreen: React.FC<MedicationListScreenProps> = ({
   return (
     <div className="min-h-screen bg-neutral-background">
       {/* Header with back button */}
-      <header className="bg-neutral-background px-4 pt-12 pb-4">
+      <header className="bg-neutral-background px-6 pt-4 pb-4">
         <div className="flex items-center justify-between max-w-md mx-auto">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <button type="button" onClick={onBackClick} className="p-1">
               <ArrowLeft size={24} className="text-primary-dark" />
             </button>
-            <h1 className="text-3xl font-extrabold text-primary-dark">Medications</h1>
+            <h1 className="text-2xl font-bold text-primary-dark">Medications</h1>
           </div>
           <button
             type="button"
@@ -38,9 +38,9 @@ export const MedicationListScreen: React.FC<MedicationListScreenProps> = ({
       </header>
 
       {/* Medications list */}
-      <main className="max-w-md mx-auto px-4 pb-24">
-        <p className="text-sm text-gray-500 mb-4">{medications.length} medications</p>
-        <div className="space-y-3">
+      <main className="max-w-md mx-auto px-6 pb-[100px]">
+        <p className="text-sm text-neutral-dark mb-4">{medications.length} medications</p>
+        <div className="space-y-4">
           {medications.map((medication) => (
             <MedicationCard
               key={medication.id}

@@ -21,19 +21,19 @@ export const AppointmentCard: React.FC<AppointmentCardProps> = ({
   return (
     <Card onClick={onClick} padding="xl" className="transition-shadow">
       {/* Doctor name and specialty */}
-      <h3 className="text-[18px] leading-[1.3] font-bold text-primary-dark mb-2">{appointment.doctor}</h3>
-      <p className="text-[14px] leading-[1.4] text-neutral-dark mb-4">{appointment.specialty}</p>
+      <h3 className="text-lg font-bold text-primary-dark mb-1">{appointment.doctor}</h3>
+      <p className="text-sm text-neutral-dark mb-4">{appointment.specialty}</p>
       
       {/* Contact info */}
-      <div className="flex items-center gap-3 text-[13px] text-neutral-dark mb-5">
+      <div className="flex items-center gap-4 text-[13px] text-neutral-dark mb-4">
         {appointment.email && (
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-2">
             <Mail size={14} className="text-text-muted" />
             <span>{appointment.email}</span>
           </div>
         )}
         {appointment.phone && (
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-2">
             <Phone size={14} className="text-text-muted" />
             <span>{appointment.phone}</span>
           </div>
@@ -41,21 +41,21 @@ export const AppointmentCard: React.FC<AppointmentCardProps> = ({
       </div>
       
       {/* Date and Time */}
-      <div className="flex gap-6 mb-5">
+      <div className="flex gap-8 mb-4">
         <div>
           <p className="text-[11px] uppercase tracking-wide text-text-muted mb-1">Date</p>
-          <p className="text-[15px] leading-[1.4] font-semibold text-primary-dark">{appointment.date}</p>
+          <p className="text-[15px] font-semibold text-primary-dark">{appointment.date}</p>
         </div>
         <div>
           <p className="text-[11px] uppercase tracking-wide text-text-muted mb-1">Time</p>
-          <p className="text-[15px] leading-[1.4] font-semibold text-primary-dark">{appointment.time}</p>
+          <p className="text-[15px] font-semibold text-primary-dark">{appointment.time}</p>
         </div>
       </div>
       
       {/* Address */}
-      <div className="mb-5">
+      <div className="mb-4">
         <p className="text-[11px] uppercase tracking-wide text-text-muted mb-1">Address</p>
-        <p className="text-[15px] leading-[1.4] font-semibold text-primary-dark mb-1">{appointment.location}</p>
+        <p className="text-[15px] font-semibold text-primary-dark mb-1">{appointment.location}</p>
         <button
           type="button"
           className="flex items-center gap-1 text-[12px] text-primary font-medium hover:underline"

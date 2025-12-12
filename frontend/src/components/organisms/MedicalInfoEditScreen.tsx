@@ -17,13 +17,13 @@ export const MedicalInfoEditScreen: React.FC<MedicalInfoEditScreenProps> = ({
   return (
     <div className="min-h-screen bg-neutral-background">
       {/* Header with back and done buttons */}
-      <header className="bg-neutral-background px-4 pt-12 pb-4">
+      <header className="bg-neutral-background px-6 pt-4 pb-4">
         <div className="flex items-center justify-between max-w-md mx-auto">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <button type="button" onClick={onBackClick} className="p-1">
               <ArrowLeft size={24} className="text-primary-dark" />
             </button>
-            <h1 className="text-2xl font-extrabold text-primary-dark">Edit Medical Info</h1>
+            <h1 className="text-xl font-bold text-primary-dark">Edit Medical Info</h1>
           </div>
           <button
             type="button"
@@ -36,10 +36,10 @@ export const MedicalInfoEditScreen: React.FC<MedicalInfoEditScreenProps> = ({
       </header>
 
       {/* Edit form */}
-      <main className="max-w-md mx-auto px-4 pb-24">
-        <Card className="rounded-[24px]">
+      <main className="max-w-md mx-auto px-6 pb-[100px]">
+        <Card className="rounded-3xl" padding="lg">
           {/* Basic Info */}
-          <div className="space-y-4 mb-6">
+          <div className="space-y-5 mb-6">
             <div>
               <label className="block text-sm text-gray-500 mb-1">Name</label>
               <input

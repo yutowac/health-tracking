@@ -48,16 +48,16 @@ type ScreenRenderer = (ctx: ScreenContext, data: ScreenData) => React.ReactNode;
 
 export const SCREEN_REGISTRY: Record<ScreenType, ScreenRenderer> = {
   dashboard: (ctx, data) => (
-    <div className="px-[26px] pt-[52px] pb-[62px] space-y-[30px]">
+    <div className="px-6 pt-4 pb-[100px] space-y-6">
       {/* Search bar */}
       <div className="flex gap-3">
         <button
           type="button"
           onClick={() => ctx.navigateTo('search')}
-          className="flex-1 bg-white rounded-[20px] px-4 py-3 flex items-center gap-2 shadow-sm text-left"
+          className="flex-1 bg-white rounded-2xl px-4 py-3.5 flex items-center gap-3 shadow-card text-left"
         >
-          <Search size={20} className="text-gray-400" />
-          <span className="text-gray-400 text-sm">Search your records</span>
+          <Search size={20} className="text-text-muted" />
+          <span className="text-text-muted text-sm">Search your records</span>
         </button>
         <button
           type="button"
@@ -110,7 +110,7 @@ export const SCREEN_REGISTRY: Record<ScreenType, ScreenRenderer> = {
   ),
 
   calendar: (_ctx, data) => (
-    <div className="py-4">
+    <div className="px-6 pt-4 pb-[100px]">
       <CalendarView
         selectedDate={data.selectedDate}
         onDateSelect={data.setSelectedDate}

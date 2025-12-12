@@ -17,7 +17,7 @@ export const AwardSection: React.FC<AwardSectionProps> = ({
 
   if (!featuredAward) {
     return (
-      <section className="px-4 py-3">
+      <section className="px-6 pt-4 pb-[100px]">
         <p className="text-center text-text-muted py-8">No badges earned yet</p>
       </section>
     );
@@ -38,9 +38,9 @@ export const AwardSection: React.FC<AwardSectionProps> = ({
   };
 
   return (
-    <section className="px-4 py-3">
+    <section className="px-6 pt-4 pb-[100px]">
       {/* Large badge display */}
-      <div className="flex justify-center mb-6">
+      <div className="flex justify-center mb-8">
         <div className={`w-48 h-48 rounded-full bg-gradient-to-br ${getBadgeColor(featuredAward.type)} shadow-lg flex items-center justify-center`}>
           <div className="w-40 h-40 rounded-full bg-gradient-to-br from-yellow-200 to-yellow-400 flex flex-col items-center justify-center border-4 border-yellow-500 shadow-inner">
             <span className="text-5xl font-bold text-yellow-700">1</span>
@@ -60,8 +60,8 @@ export const AwardSection: React.FC<AwardSectionProps> = ({
           <Share2 size={20} className="text-white" />
         </button>
         
-        <Card className="rounded-[24px] pt-6">
-          <h3 className="text-xl font-bold text-primary-dark mb-3">{featuredAward.name}</h3>
+        <Card className="rounded-3xl" padding="lg">
+          <h3 className="text-xl font-bold text-primary-dark mb-2">{featuredAward.name}</h3>
           <p className="text-base text-neutral-dark leading-relaxed">{featuredAward.description}</p>
         </Card>
       </div>

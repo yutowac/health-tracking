@@ -28,11 +28,11 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
   return (
     <div>
       {/* Main overview card with gradient background */}
-      <div className="bg-gradient-to-br from-primary-light via-[#f0e8ff] to-[#ffe8f4] rounded-[24px] p-[32px] shadow-card">
-        <div className="flex gap-3">
+      <div className="bg-gradient-to-br from-primary-light via-[#f0e8ff] to-[#ffe8f4] rounded-3xl p-5 shadow-card">
+        <div className="flex gap-4">
           {/* Left side - Your week card */}
-          <div className="flex-1 bg-white/60 rounded-[20px] p-4 relative">
-            <h3 className="text-primary-dark font-semibold text-sm mb-3">Your week</h3>
+          <div className="flex-1 bg-white/60 rounded-2xl p-4 relative">
+            <h3 className="text-primary-dark font-semibold text-sm mb-4">Your week</h3>
             
             {/* Donut chart */}
             <div className="relative w-20 h-20 mx-auto mb-3">
@@ -89,12 +89,12 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
           </div>
           
           {/* Right side - Coins and News */}
-          <div className="flex-1 flex flex-col gap-3">
+          <div className="flex-1 flex flex-col gap-4">
             {/* Coins row */}
             <button
               type="button"
               onClick={onCoinsClick}
-              className="bg-accent-purple rounded-[16px] p-3 flex items-center justify-center gap-2"
+              className="bg-accent-purple rounded-2xl p-3 flex items-center justify-center gap-3"
             >
               <div className="w-8 h-8 rounded-full bg-gold flex items-center justify-center text-white font-bold text-xs shadow-md">1</div>
               <div className="w-8 h-8 rounded-full bg-silver flex items-center justify-center text-white font-bold text-xs shadow-md">2</div>
@@ -102,9 +102,9 @@ export const DashboardOverview: React.FC<DashboardOverviewProps> = ({
             </button>
             
             {/* News section */}
-            <div className="bg-white/80 rounded-[16px] p-3 flex-1">
-              <h4 className="text-primary-dark font-semibold text-sm mb-2">News</h4>
-              <div className="space-y-2">
+            <div className="bg-white/80 rounded-2xl p-4 flex-1">
+              <h4 className="text-primary-dark font-semibold text-sm mb-3">News</h4>
+              <div className="space-y-3">
                 {newsItems.slice(0, 2).map((news) => (
                   <button
                     key={news.id}
