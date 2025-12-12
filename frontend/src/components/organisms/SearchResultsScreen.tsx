@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowLeft, Search } from 'lucide-react';
 import { AppointmentCard, MedicationCard, SymptomCard } from '../molecules';
 import { Card } from '../atoms';
+import { ScreenContainer } from '../layout';
 import type { Appointment, Medication, Symptom } from '../../types';
 
 interface NewsItem {
@@ -38,8 +39,7 @@ export const SearchResultsScreen: React.FC<SearchResultsScreenProps> = ({
   const totalResults = appointments.length + medications.length + symptoms.length + newsItems.length;
 
   return (
-    <div className="min-h-screen bg-neutral-background">
-      {/* Header with back button and search bar */}
+    <ScreenContainer>
       <header className="bg-neutral-background px-[26px] pt-[20px] pb-5">
         <div className="flex items-center gap-4 max-w-md mx-auto">
           <button type="button" onClick={onBackClick} className="p-1.5">
@@ -128,7 +128,7 @@ export const SearchResultsScreen: React.FC<SearchResultsScreenProps> = ({
           <p className="text-center text-text-muted py-10">No results found for "{query}"</p>
         )}
       </main>
-    </div>
+    </ScreenContainer>
   );
 };
 

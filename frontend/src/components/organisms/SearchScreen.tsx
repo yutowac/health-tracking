@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowLeft, Search, Clock } from 'lucide-react';
+import { ScreenContainer } from '../layout';
 
 interface SearchScreenProps {
   onBackClick: () => void;
@@ -18,8 +19,7 @@ export const SearchScreen: React.FC<SearchScreenProps> = ({
   ];
 
   return (
-    <div className="min-h-screen bg-neutral-background">
-      {/* Header with back button and search bar */}
+    <ScreenContainer>
       <header className="bg-neutral-background px-[26px] pt-[20px] pb-5">
         <div className="flex items-center gap-4 max-w-md mx-auto">
           <button type="button" onClick={onBackClick} className="p-1.5">
@@ -37,7 +37,6 @@ export const SearchScreen: React.FC<SearchScreenProps> = ({
         </div>
       </header>
 
-      {/* Recent searches */}
       <main className="max-w-md mx-auto px-[26px] pb-[120px]">
         <h2 className="text-lg font-semibold text-primary-dark mb-5">Recent Searches</h2>
         <div className="space-y-4">
@@ -68,7 +67,7 @@ export const SearchScreen: React.FC<SearchScreenProps> = ({
           ))}
         </div>
       </main>
-    </div>
+    </ScreenContainer>
   );
 };
 

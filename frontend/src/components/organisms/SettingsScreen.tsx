@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowLeft, ChevronRight, User, Bell, Shield, HelpCircle, LogOut, Moon, Globe } from 'lucide-react';
+import { ChevronRight, User, Bell, Shield, HelpCircle, LogOut, Moon, Globe } from 'lucide-react';
+import { ScreenContainer, ScreenHeader } from '../layout';
 
 interface SettingsScreenProps {
   userName: string;
@@ -41,16 +42,8 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = ({
   ];
 
   return (
-    <div className="min-h-screen bg-neutral-background">
-      {/* Header with back button */}
-      <header className="bg-neutral-background px-[26px] pt-[20px] pb-5">
-        <div className="flex items-center gap-4 max-w-md mx-auto">
-          <button type="button" onClick={onBackClick} className="p-1.5">
-            <ArrowLeft size={26} className="text-primary-dark" />
-          </button>
-          <h1 className="text-2xl font-bold text-primary-dark">Settings</h1>
-        </div>
-      </header>
+    <ScreenContainer>
+      <ScreenHeader title="Settings" onBackClick={onBackClick} />
 
       {/* User info */}
       <main className="max-w-md mx-auto px-[26px] pb-[120px]">
@@ -101,7 +94,7 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = ({
           <span className="text-error font-medium text-sm">Log out</span>
         </button>
       </main>
-    </div>
+    </ScreenContainer>
   );
 };
 
