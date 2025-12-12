@@ -12,18 +12,16 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = ({
   activeTab,
   onTabChange,
 }) => {
-  // Figma shows 4 icons: Calendar, Search, Upload, Medical ID
-  // We map these to our 5 tabs (dashboard is accessed via Home icon)
   const tabs = [
     { id: 'calendar' as TabType, icon: Calendar, label: 'Calendar' },
     { id: 'timeline' as TabType, icon: Search, label: 'Search' },
     { id: 'dashboard' as TabType, icon: Home, label: 'Home' },
-    { id: 'medical' as TabType, icon: User, label: 'Medical Info' },
+    { id: 'medical' as TabType, icon: User, label: 'Medical' },
   ];
 
   return (
-    <nav className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40">
-      <div className="bg-white rounded-[28px] shadow-lg px-8 py-4 flex items-center gap-10">
+    <nav className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40" aria-label="Main navigation">
+      <div className="bg-white/95 backdrop-blur-md rounded-[32px] shadow-[0_8px_32px_rgba(0,31,77,0.12),0_2px_8px_rgba(0,0,0,0.06)] px-6 py-3 flex items-center gap-2">
         {tabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;
@@ -33,13 +31,17 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = ({
               type="button"
               onClick={() => onTabChange(tab.id)}
               aria-label={tab.label}
-              className={`p-2.5 rounded-xl transition-all duration-200 ${
+              aria-current={isActive ? 'page' : undefined}
+              className={`flex flex-col items-center gap-1 px-4 py-2 rounded-2xl transition-all duration-200 ${
                 isActive
-                  ? 'text-primary bg-primary/10'
-                  : 'text-text-muted hover:text-primary'
+                  ? 'bg-primary-light text-primary shadow-[0_4px_12px_rgba(0,122,255,0.2)]'
+                  : 'text-text-muted hover:text-primary-dark active:bg-primary-light/30'
               }`}
             >
-              <Icon size={24} strokeWidth={2} />
+              <Icon size={22} strokeWidth={isActive ? 2.5 : 2} />
+              <span className={`text-[10px] font-medium ${isActive ? 'text-primary' : 'text-text-muted'}`}>
+                {tab.label}
+              </span>
             </button>
           );
         })}

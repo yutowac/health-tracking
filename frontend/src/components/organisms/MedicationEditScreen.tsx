@@ -10,6 +10,9 @@ interface MedicationEditScreenProps {
   onSaveClick?: () => void;
 }
 
+const inputClassName = "w-full px-4 py-3.5 bg-primary-light/30 border border-primary-light rounded-2xl text-[14px] text-primary-dark font-medium placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all";
+const labelClassName = "block text-[11px] uppercase tracking-wide text-text-muted mb-2";
+
 export const MedicationEditScreen: React.FC<MedicationEditScreenProps> = ({
   medication,
   onBackClick,
@@ -21,7 +24,7 @@ export const MedicationEditScreen: React.FC<MedicationEditScreenProps> = ({
     <button
       type="button"
       onClick={onSaveClick}
-      className="w-12 h-12 bg-primary rounded-2xl flex items-center justify-center"
+      className="w-12 h-12 bg-gradient-to-br from-primary to-[#0066d6] rounded-2xl flex items-center justify-center shadow-[0_4px_12px_rgba(0,122,255,0.3)] active:scale-95 transition-transform"
     >
       <Check size={22} className="text-white" />
     </button>
@@ -33,47 +36,47 @@ export const MedicationEditScreen: React.FC<MedicationEditScreenProps> = ({
         title={isEditing ? 'Edit Medication' : 'Add Medication'}
         onBackClick={onBackClick}
         rightSlot={saveButton}
+        variant="secondary"
       />
 
-      {/* Edit form */}
       <main className="max-w-md mx-auto px-[26px] pb-[120px]">
-        <Card className="rounded-[24px]" padding="xl">
-          <div className="space-y-6">
+        <Card padding="xl">
+          <div className="space-y-5">
             <div>
-              <label className="block text-sm text-gray-500 mb-1">Medication Name</label>
+              <label className={labelClassName}>Medication Name</label>
               <input
                 type="text"
                 defaultValue={medication?.name || ''}
                 placeholder="e.g., Aspirin"
-                className="w-full px-4 py-3 bg-gray-50 rounded-xl text-primary-dark font-medium focus:outline-none focus:ring-2 focus:ring-primary"
+                className={inputClassName}
               />
             </div>
 
             <div>
-              <label className="block text-sm text-gray-500 mb-1">Dosage</label>
+              <label className={labelClassName}>Dosage</label>
               <input
                 type="text"
                 defaultValue={medication?.dosage || ''}
                 placeholder="e.g., 500mg"
-                className="w-full px-4 py-3 bg-gray-50 rounded-xl text-primary-dark font-medium focus:outline-none focus:ring-2 focus:ring-primary"
+                className={inputClassName}
               />
             </div>
 
             <div>
-              <label className="block text-sm text-gray-500 mb-1">Manufacturer</label>
+              <label className={labelClassName}>Manufacturer</label>
               <input
                 type="text"
                 defaultValue={medication?.manufacturer || ''}
                 placeholder="e.g., BAYER"
-                className="w-full px-4 py-3 bg-gray-50 rounded-xl text-primary-dark font-medium focus:outline-none focus:ring-2 focus:ring-primary"
+                className={inputClassName}
               />
             </div>
 
             <div>
-              <label className="block text-sm text-gray-500 mb-1">Frequency</label>
+              <label className={labelClassName}>Frequency</label>
               <select
                 defaultValue={medication?.frequency || '1x Daily'}
-                className="w-full px-4 py-3 bg-gray-50 rounded-xl text-primary-dark font-medium focus:outline-none focus:ring-2 focus:ring-primary"
+                className={inputClassName}
               >
                 <option value="1x Daily">1x Daily</option>
                 <option value="2x Daily">2x Daily</option>
@@ -84,22 +87,22 @@ export const MedicationEditScreen: React.FC<MedicationEditScreenProps> = ({
             </div>
 
             <div>
-              <label className="block text-sm text-gray-500 mb-1">Reminder Times</label>
+              <label className={labelClassName}>Reminder Times</label>
               <input
                 type="text"
                 defaultValue={medication?.time || ''}
                 placeholder="e.g., 6:00, 22:00"
-                className="w-full px-4 py-3 bg-gray-50 rounded-xl text-primary-dark font-medium focus:outline-none focus:ring-2 focus:ring-primary"
+                className={inputClassName}
               />
             </div>
 
             <div>
-              <label className="block text-sm text-gray-500 mb-1">Notes</label>
+              <label className={labelClassName}>Notes</label>
               <textarea
                 defaultValue={medication?.notes || ''}
                 placeholder="Add any additional notes..."
                 rows={3}
-                className="w-full px-4 py-3 bg-gray-50 rounded-xl text-primary-dark font-medium focus:outline-none focus:ring-2 focus:ring-primary resize-none"
+                className={`${inputClassName} resize-none`}
               />
             </div>
           </div>
