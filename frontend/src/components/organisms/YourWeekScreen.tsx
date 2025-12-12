@@ -36,8 +36,8 @@ export const YourWeekScreen: React.FC<YourWeekScreenProps> = ({
       <ScreenHeader title="Your Week" onBackClick={onBackClick} />
 
       {/* Progress wheel */}
-      <main className="max-w-md mx-auto px-[26px] pb-[120px]">
-        <Card className="rounded-[24px] mb-8" padding="xl">
+      <main className="max-w-md mx-auto px-[26px] pt-6 pb-[140px]">
+        <Card className="rounded-[24px] mb-10" padding="xl">
           <div className="flex flex-col items-center py-4">
             <div className="relative w-48 h-48">
               <svg className="w-full h-full transform -rotate-90">
@@ -84,11 +84,11 @@ export const YourWeekScreen: React.FC<YourWeekScreenProps> = ({
         </Card>
 
         {/* Medications section */}
-        <div className="mb-8">
-          <div className="flex items-center justify-between mb-5">
+        <div className="mb-10">
+          <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-3">
               <Pill size={22} className="text-primary" />
-              <h2 className="text-lg font-semibold text-primary-dark">Medications</h2>
+              <h2 className="text-[18px] font-semibold text-primary-dark">Medications</h2>
             </div>
             <button
               type="button"
@@ -98,7 +98,7 @@ export const YourWeekScreen: React.FC<YourWeekScreenProps> = ({
               View all
             </button>
           </div>
-          <div className="space-y-5">
+          <div className="space-y-6">
             {medications.slice(0, 2).map((medication) => (
               <MedicationCard
                 key={medication.id}
@@ -110,11 +110,11 @@ export const YourWeekScreen: React.FC<YourWeekScreenProps> = ({
         </div>
 
         {/* Symptoms section */}
-        <div className="mb-8">
-          <div className="flex items-center justify-between mb-5">
+        <div className="mb-10">
+          <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-3">
               <Activity size={22} className="text-accent-pink" />
-              <h2 className="text-lg font-semibold text-primary-dark">Symptoms</h2>
+              <h2 className="text-[18px] font-semibold text-primary-dark">Symptoms</h2>
             </div>
             <button
               type="button"
@@ -124,7 +124,7 @@ export const YourWeekScreen: React.FC<YourWeekScreenProps> = ({
               View all
             </button>
           </div>
-          <div className="space-y-5">
+          <div className="space-y-6">
             {symptoms.slice(0, 2).map((symptom) => (
               <SymptomCard
                 key={symptom.id}

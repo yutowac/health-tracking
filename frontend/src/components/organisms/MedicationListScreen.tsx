@@ -31,9 +31,9 @@ export const MedicationListScreen: React.FC<MedicationListScreenProps> = ({
     <ScreenContainer>
       <ScreenHeader title="Medications" onBackClick={onBackClick} rightSlot={addButton} />
 
-      <main className="max-w-md mx-auto px-[26px] pb-[120px]">
-        <p className="text-sm text-neutral-dark mb-5">{medications.length} medications</p>
-        <div className="space-y-5">
+      <main className="max-w-md mx-auto px-[26px] pt-6 pb-[140px]">
+        <p className="text-sm text-neutral-dark mb-6">{medications.length} medications</p>
+        <div className="space-y-6">
           {medications.map((medication) => (
             <MedicationCard
               key={medication.id}

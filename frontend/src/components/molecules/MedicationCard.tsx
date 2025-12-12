@@ -20,10 +20,10 @@ export const MedicationCard: React.FC<MedicationCardProps> = ({
       <div className="flex gap-5">
         {/* Left side - Medication info */}
         <div className="flex-1">
-          <h3 className="text-xl font-bold text-primary-dark mb-1">{medication.name}</h3>
-          <p className="text-sm text-neutral-dark mb-1">{medication.dosage}</p>
+          <h3 className="text-xl font-bold text-primary-dark mb-2">{medication.name}</h3>
+          <p className="text-sm text-neutral-dark mb-2">{medication.dosage}</p>
           {medication.manufacturer && (
-            <p className="text-sm text-neutral-dark mb-3">{medication.manufacturer}</p>
+            <p className="text-sm text-neutral-dark mb-4">{medication.manufacturer}</p>
           )}
           <p className="text-sm font-semibold text-secondary">{medication.frequency}</p>
         </div>
@@ -37,7 +37,7 @@ export const MedicationCard: React.FC<MedicationCardProps> = ({
       </div>
       
       {/* Reminders section */}
-      <div className="mt-5 pt-5 border-t border-primary-light flex items-center justify-between">
+      <div className="mt-6 pt-6 border-t border-primary-light flex items-center justify-between">
         <div className="flex items-center gap-3">
           <Bell size={18} className="text-text-muted" />
           <span className="text-sm text-neutral-dark">Reminders</span>

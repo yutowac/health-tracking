@@ -37,9 +37,9 @@ export const SearchScreen: React.FC<SearchScreenProps> = ({
         </div>
       </header>
 
-      <main className="max-w-md mx-auto px-[26px] pb-[120px]">
-        <h2 className="text-lg font-semibold text-primary-dark mb-5">Recent Searches</h2>
-        <div className="space-y-4">
+      <main className="max-w-md mx-auto px-[26px] pt-6 pb-[140px]">
+        <h2 className="text-[18px] font-semibold text-primary-dark mb-6">Recent Searches</h2>
+        <div className="space-y-5">
           {recentSearches.map((search, index) => (
             <button
               key={index}
@@ -54,8 +54,8 @@ export const SearchScreen: React.FC<SearchScreenProps> = ({
         </div>
 
         {/* Search categories */}
-        <h2 className="text-lg font-semibold text-primary-dark mt-10 mb-5">Categories</h2>
-        <div className="grid grid-cols-2 gap-5">
+        <h2 className="text-[18px] font-semibold text-primary-dark mt-12 mb-6">Categories</h2>
+        <div className="grid grid-cols-2 gap-6">
           {['Medications', 'Symptoms', 'Appointments', 'News'].map((category) => (
             <button
               key={category}

@@ -23,8 +23,8 @@ export const NewsScreen: React.FC<NewsScreenProps> = ({
     <ScreenContainer>
       <ScreenHeader title="News" onBackClick={onBackClick} />
 
-      <main className="max-w-md mx-auto px-[26px] pb-[120px]">
-        <div className="space-y-5">
+      <main className="max-w-md mx-auto px-[26px] pt-6 pb-[140px]">
+        <div className="space-y-6">
           {newsItems.map((item) => (
             <Card
               key={item.id}
@@ -32,11 +32,11 @@ export const NewsScreen: React.FC<NewsScreenProps> = ({
               className="rounded-[24px] hover:shadow-lg transition-shadow cursor-pointer"
               padding="xl"
             >
-              <h3 className="text-lg font-bold text-primary-dark mb-3">{item.title}</h3>
+              <h3 className="text-lg font-bold text-primary-dark mb-4">{item.title}</h3>
               <p className="text-sm text-neutral-dark leading-relaxed">{item.summary}</p>
               <button
                 type="button"
-                className="mt-5 text-sm font-semibold text-primary hover:underline"
+                className="mt-6 text-sm font-semibold text-primary hover:underline"
               >
                 Read more
               </button>
