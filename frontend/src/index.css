@@ -42,6 +42,47 @@
   /* Shadows */
   --shadow-card: 0 10px 30px rgba(0, 31, 77, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
   --shadow-blue: 0 4px 14px 0 rgba(0, 122, 255, 0.35);
+  
+  /* ===== Figma Spacing Tokens (8pt grid) ===== */
+  /* Screen-level spacing */
+  --spacing-screen-x: 24px;
+  --spacing-screen-top: 16px;
+  --spacing-screen-bottom: 100px;
+  
+  /* Section spacing */
+  --spacing-section-gap: 24px;
+  --spacing-section-title-gap: 16px;
+  
+  /* Card spacing */
+  --spacing-card-padding: 20px;
+  --spacing-card-padding-lg: 24px;
+  --spacing-card-gap: 16px;
+  --spacing-card-title-gap: 8px;
+  --spacing-card-content-gap: 12px;
+  
+  /* List spacing */
+  --spacing-list-gap: 16px;
+  --spacing-list-item-gap: 12px;
+  
+  /* Button/Icon spacing */
+  --spacing-button-gap: 8px;
+  --spacing-icon-gap: 12px;
+  
+  /* Bottom navigation */
+  --spacing-bottom-nav-x: 24px;
+  --spacing-bottom-nav-y: 12px;
+  --spacing-bottom-nav-gap: 32px;
+  --spacing-bottom-nav-offset: 24px;
+  
+  /* Header spacing */
+  --spacing-header-x: 24px;
+  --spacing-header-y: 16px;
+  
+  /* Form spacing */
+  --spacing-form-gap: 20px;
+  --spacing-form-label-gap: 8px;
+  --spacing-input-padding-x: 16px;
+  --spacing-input-padding-y: 14px;
 }
 
 * {

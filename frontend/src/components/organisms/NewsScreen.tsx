@@ -22,29 +22,30 @@ export const NewsScreen: React.FC<NewsScreenProps> = ({
   return (
     <div className="min-h-screen bg-neutral-background">
       {/* Header with back button */}
-      <header className="bg-neutral-background px-4 pt-12 pb-4">
-        <div className="flex items-center gap-2 max-w-md mx-auto">
-          <button type="button" onClick={onBackClick} className="p-1">
-            <ArrowLeft size={24} className="text-primary-dark" />
+      <header className="bg-neutral-background px-[26px] pt-[20px] pb-5">
+        <div className="flex items-center gap-4 max-w-md mx-auto">
+          <button type="button" onClick={onBackClick} className="p-1.5">
+            <ArrowLeft size={26} className="text-primary-dark" />
           </button>
-          <h1 className="text-3xl font-extrabold text-primary-dark">News</h1>
+          <h1 className="text-2xl font-bold text-primary-dark">News</h1>
         </div>
       </header>
 
       {/* News list */}
-      <main className="max-w-md mx-auto px-4 pb-24">
-        <div className="space-y-4">
+      <main className="max-w-md mx-auto px-[26px] pb-[120px]">
+        <div className="space-y-5">
           {newsItems.map((item) => (
             <Card
               key={item.id}
               onClick={() => onNewsClick(item.id)}
               className="rounded-[24px] hover:shadow-lg transition-shadow cursor-pointer"
+              padding="xl"
             >
-              <h3 className="text-lg font-bold text-primary-dark mb-2">{item.title}</h3>
-              <p className="text-sm text-gray-600 leading-relaxed">{item.summary}</p>
+              <h3 className="text-lg font-bold text-primary-dark mb-3">{item.title}</h3>
+              <p className="text-sm text-neutral-dark leading-relaxed">{item.summary}</p>
               <button
                 type="button"
-                className="mt-3 text-sm font-semibold text-primary hover:underline"
+                className="mt-5 text-sm font-semibold text-primary hover:underline"
               >
                 Read more
               </button>

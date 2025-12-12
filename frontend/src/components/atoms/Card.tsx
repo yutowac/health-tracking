@@ -13,14 +13,14 @@ export const Card: React.FC<CardProps> = ({
   onClick,
   padding = 'md',
 }) => {
-  const baseStyles = 'bg-white rounded-[24px] shadow-card';
+  const baseStyles = 'bg-white rounded-3xl shadow-card';
   
   const paddingStyles = {
     none: '',
-    sm: 'p-3',
-    md: 'p-4',
+    sm: 'p-4',
+    md: 'p-5',
     lg: 'p-6',
-    xl: 'p-[32px]',
+    xl: 'p-8',
   };
   
   const clickableStyles = onClick ? 'cursor-pointer hover:shadow-lg transition-shadow duration-200' : '';

@@ -60,7 +60,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-card p-4 mx-4">
+    <div className="bg-white rounded-3xl shadow-card p-5">
       <div className="flex items-center justify-between mb-4">
         <IconButton
           icon={<ChevronLeft size={20} />}

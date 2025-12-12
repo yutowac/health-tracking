@@ -40,27 +40,27 @@ export const SearchResultsScreen: React.FC<SearchResultsScreenProps> = ({
   return (
     <div className="min-h-screen bg-neutral-background">
       {/* Header with back button and search bar */}
-      <header className="bg-neutral-background px-4 pt-12 pb-4">
-        <div className="flex items-center gap-3 max-w-md mx-auto">
-          <button type="button" onClick={onBackClick} className="p-1">
-            <ArrowLeft size={24} className="text-primary-dark" />
+      <header className="bg-neutral-background px-[26px] pt-[20px] pb-5">
+        <div className="flex items-center gap-4 max-w-md mx-auto">
+          <button type="button" onClick={onBackClick} className="p-1.5">
+            <ArrowLeft size={26} className="text-primary-dark" />
           </button>
-          <div className="flex-1 bg-white rounded-[20px] px-4 py-3 flex items-center gap-2 shadow-sm">
-            <Search size={20} className="text-gray-400" />
-            <span className="text-primary-dark">{query}</span>
+          <div className="flex-1 bg-white rounded-[20px] px-5 py-4 flex items-center gap-4 shadow-card">
+            <Search size={22} className="text-text-muted" />
+            <span className="text-primary-dark text-sm">{query}</span>
           </div>
         </div>
       </header>
 
       {/* Search results */}
-      <main className="max-w-md mx-auto px-4 pb-24">
-        <p className="text-sm text-gray-500 mb-4">{totalResults} results found</p>
+      <main className="max-w-md mx-auto px-[26px] pb-[120px]">
+        <p className="text-sm text-neutral-dark mb-5">{totalResults} results found</p>
 
         {/* Appointments */}
         {appointments.length > 0 && (
-          <div className="mb-6">
-            <h2 className="text-lg font-semibold text-primary-dark mb-3">Appointments</h2>
-            <div className="space-y-3">
+          <div className="mb-8">
+            <h2 className="text-lg font-semibold text-primary-dark mb-5">Appointments</h2>
+            <div className="space-y-5">
               {appointments.map((appointment) => (
                 <AppointmentCard
                   key={appointment.id}
@@ -74,9 +74,9 @@ export const SearchResultsScreen: React.FC<SearchResultsScreenProps> = ({
 
         {/* Medications */}
         {medications.length > 0 && (
-          <div className="mb-6">
-            <h2 className="text-lg font-semibold text-primary-dark mb-3">Medications</h2>
-            <div className="space-y-3">
+          <div className="mb-8">
+            <h2 className="text-lg font-semibold text-primary-dark mb-5">Medications</h2>
+            <div className="space-y-5">
               {medications.map((medication) => (
                 <MedicationCard
                   key={medication.id}
@@ -90,9 +90,9 @@ export const SearchResultsScreen: React.FC<SearchResultsScreenProps> = ({
 
         {/* Symptoms */}
         {symptoms.length > 0 && (
-          <div className="mb-6">
-            <h2 className="text-lg font-semibold text-primary-dark mb-3">Symptoms</h2>
-            <div className="space-y-3">
+          <div className="mb-8">
+            <h2 className="text-lg font-semibold text-primary-dark mb-5">Symptoms</h2>
+            <div className="space-y-5">
               {symptoms.map((symptom) => (
                 <SymptomCard
                   key={symptom.id}
@@ -106,17 +106,18 @@ export const SearchResultsScreen: React.FC<SearchResultsScreenProps> = ({
 
         {/* News */}
         {newsItems.length > 0 && (
-          <div className="mb-6">
-            <h2 className="text-lg font-semibold text-primary-dark mb-3">News</h2>
-            <div className="space-y-3">
+          <div className="mb-8">
+            <h2 className="text-lg font-semibold text-primary-dark mb-5">News</h2>
+            <div className="space-y-5">
               {newsItems.map((item) => (
                 <Card
                   key={item.id}
                   onClick={() => onNewsClick(item.id)}
                   className="rounded-[24px] hover:shadow-lg transition-shadow cursor-pointer"
+                  padding="xl"
                 >
-                  <h3 className="text-base font-bold text-primary-dark mb-1">{item.title}</h3>
-                  <p className="text-sm text-gray-600">{item.summary}</p>
+                  <h3 className="text-base font-bold text-primary-dark mb-2">{item.title}</h3>
+                  <p className="text-sm text-neutral-dark">{item.summary}</p>
                 </Card>
               ))}
             </div>
@@ -124,7 +125,7 @@ export const SearchResultsScreen: React.FC<SearchResultsScreenProps> = ({
         )}
 
         {totalResults === 0 && (
-          <p className="text-center text-gray-500 py-8">No results found for "{query}"</p>
+          <p className="text-center text-text-muted py-10">No results found for "{query}"</p>
         )}
       </main>
     </div>

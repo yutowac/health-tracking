@@ -15,13 +15,13 @@ export const MedicalInfoCard: React.FC<MedicalInfoCardProps> = ({
   onEditClick = () => {},
 }) => {
   return (
-    <div className="px-4">
-      <Card className="rounded-[24px]">
+    <div className="px-6 pt-4 pb-[100px]">
+      <Card className="rounded-3xl" padding="lg">
         {/* Name */}
         <h2 className="text-2xl font-bold text-primary-dark mb-4">{medicalInfo.name}</h2>
         
         {/* Basic Info */}
-        <div className="space-y-2 mb-6">
+        <div className="space-y-3 mb-6">
           <div className="flex">
             <span className="text-sm text-neutral-dark w-28">Gender:</span>
             <span className="text-sm font-medium text-primary-dark">{medicalInfo.gender}</span>

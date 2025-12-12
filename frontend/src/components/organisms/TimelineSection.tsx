@@ -22,9 +22,9 @@ export const TimelineSection: React.FC<TimelineSectionProps> = ({
   });
 
   return (
-    <section className="px-4 py-3">
-      <h2 className="text-lg font-semibold text-neutral-dark mb-3">{title}</h2>
-      <div className="space-y-3 relative">
+    <section className="px-6 pt-4 pb-[100px]">
+      <h2 className="text-lg font-semibold text-primary-dark mb-4">{title}</h2>
+      <div className="space-y-4 relative">
         <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-primary-light" />
         {sortedReminders.map((reminder) => (
           <div key={reminder.id} className="relative pl-8">
