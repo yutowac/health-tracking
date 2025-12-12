@@ -1,6 +1,7 @@
 import React from 'react';
-import { ArrowLeft, Check } from 'lucide-react';
+import { Check } from 'lucide-react';
 import { Card } from '../atoms';
+import { ScreenContainer, ScreenHeader } from '../layout';
 import type { Medication } from '../../types';
 
 interface MedicationEditScreenProps {
@@ -16,28 +17,23 @@ export const MedicationEditScreen: React.FC<MedicationEditScreenProps> = ({
 }) => {
   const isEditing = !!medication;
 
+  const saveButton = (
+    <button
+      type="button"
+      onClick={onSaveClick}
+      className="w-12 h-12 bg-primary rounded-2xl flex items-center justify-center"
+    >
+      <Check size={22} className="text-white" />
+    </button>
+  );
+
   return (
-    <div className="min-h-screen bg-neutral-background">
-      {/* Header with back and done buttons */}
-      <header className="bg-neutral-background px-[26px] pt-[20px] pb-5">
-        <div className="flex items-center justify-between max-w-md mx-auto">
-          <div className="flex items-center gap-4">
-            <button type="button" onClick={onBackClick} className="p-1.5">
-              <ArrowLeft size={26} className="text-primary-dark" />
-            </button>
-            <h1 className="text-xl font-bold text-primary-dark">
-              {isEditing ? 'Edit Medication' : 'Add Medication'}
-            </h1>
-          </div>
-          <button
-            type="button"
-            onClick={onSaveClick}
-            className="w-12 h-12 bg-primary rounded-2xl flex items-center justify-center"
-          >
-            <Check size={22} className="text-white" />
-          </button>
-        </div>
-      </header>
+    <ScreenContainer>
+      <ScreenHeader
+        title={isEditing ? 'Edit Medication' : 'Add Medication'}
+        onBackClick={onBackClick}
+        rightSlot={saveButton}
+      />
 
       {/* Edit form */}
       <main className="max-w-md mx-auto px-[26px] pb-[120px]">
@@ -109,7 +105,7 @@ export const MedicationEditScreen: React.FC<MedicationEditScreenProps> = ({
           </div>
         </Card>
       </main>
-    </div>
+    </ScreenContainer>
   );
 };
 

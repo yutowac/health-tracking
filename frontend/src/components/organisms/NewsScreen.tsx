@@ -1,6 +1,6 @@
 import React from 'react';
-import { ArrowLeft } from 'lucide-react';
 import { Card } from '../atoms';
+import { ScreenContainer, ScreenHeader } from '../layout';
 
 interface NewsItem {
   id: string;
@@ -20,18 +20,9 @@ export const NewsScreen: React.FC<NewsScreenProps> = ({
   onNewsClick = () => {},
 }) => {
   return (
-    <div className="min-h-screen bg-neutral-background">
-      {/* Header with back button */}
-      <header className="bg-neutral-background px-[26px] pt-[20px] pb-5">
-        <div className="flex items-center gap-4 max-w-md mx-auto">
-          <button type="button" onClick={onBackClick} className="p-1.5">
-            <ArrowLeft size={26} className="text-primary-dark" />
-          </button>
-          <h1 className="text-2xl font-bold text-primary-dark">News</h1>
-        </div>
-      </header>
+    <ScreenContainer>
+      <ScreenHeader title="News" onBackClick={onBackClick} />
 
-      {/* News list */}
       <main className="max-w-md mx-auto px-[26px] pb-[120px]">
         <div className="space-y-5">
           {newsItems.map((item) => (
@@ -53,7 +44,7 @@ export const NewsScreen: React.FC<NewsScreenProps> = ({
           ))}
         </div>
       </main>
-    </div>
+    </ScreenContainer>
   );
 };
 

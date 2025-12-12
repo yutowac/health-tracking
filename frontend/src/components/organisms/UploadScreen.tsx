@@ -1,6 +1,7 @@
 import React from 'react';
-import { ArrowLeft, Upload, FileText, Image, File } from 'lucide-react';
+import { Upload, FileText, Image, File } from 'lucide-react';
 import { Card } from '../atoms';
+import { ScreenContainer, ScreenHeader } from '../layout';
 
 interface UploadScreenProps {
   onBackClick: () => void;
@@ -12,16 +13,8 @@ export const UploadScreen: React.FC<UploadScreenProps> = ({
   onUploadClick = () => {},
 }) => {
   return (
-    <div className="min-h-screen bg-neutral-background">
-      {/* Header with back button */}
-      <header className="bg-neutral-background px-[26px] pt-[20px] pb-5">
-        <div className="flex items-center gap-4 max-w-md mx-auto">
-          <button type="button" onClick={onBackClick} className="p-1.5">
-            <ArrowLeft size={26} className="text-primary-dark" />
-          </button>
-          <h1 className="text-2xl font-bold text-primary-dark">Upload</h1>
-        </div>
-      </header>
+    <ScreenContainer>
+      <ScreenHeader title="Upload" onBackClick={onBackClick} />
 
       {/* Upload area */}
       <main className="max-w-md mx-auto px-[26px] pb-[120px]">
@@ -71,7 +64,7 @@ export const UploadScreen: React.FC<UploadScreenProps> = ({
           </Card>
         </div>
       </main>
-    </div>
+    </ScreenContainer>
   );
 };
 

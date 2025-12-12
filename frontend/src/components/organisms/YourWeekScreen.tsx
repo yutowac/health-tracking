@@ -1,7 +1,8 @@
 import React from 'react';
-import { ArrowLeft, Pill, Activity } from 'lucide-react';
+import { Pill, Activity } from 'lucide-react';
 import { Card } from '../atoms';
 import { MedicationCard, SymptomCard } from '../molecules';
+import { ScreenContainer, ScreenHeader } from '../layout';
 import type { Medication, Symptom } from '../../types';
 
 interface YourWeekScreenProps {
@@ -31,16 +32,8 @@ export const YourWeekScreen: React.FC<YourWeekScreenProps> = ({
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
   return (
-    <div className="min-h-screen bg-neutral-background">
-      {/* Header with back button */}
-      <header className="bg-neutral-background px-[26px] pt-[20px] pb-5">
-        <div className="flex items-center gap-4 max-w-md mx-auto">
-          <button type="button" onClick={onBackClick} className="p-1.5">
-            <ArrowLeft size={26} className="text-primary-dark" />
-          </button>
-          <h1 className="text-2xl font-bold text-primary-dark">Your Week</h1>
-        </div>
-      </header>
+    <ScreenContainer>
+      <ScreenHeader title="Your Week" onBackClick={onBackClick} />
 
       {/* Progress wheel */}
       <main className="max-w-md mx-auto px-[26px] pb-[120px]">
@@ -142,7 +135,7 @@ export const YourWeekScreen: React.FC<YourWeekScreenProps> = ({
           </div>
         </div>
       </main>
-    </div>
+    </ScreenContainer>
   );
 };
 
