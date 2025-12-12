@@ -19,28 +19,28 @@ export const SymptomsListScreen: React.FC<SymptomsListScreenProps> = ({
   return (
     <div className="min-h-screen bg-neutral-background">
       {/* Header with back button */}
-      <header className="bg-neutral-background px-6 pt-4 pb-4">
+      <header className="bg-neutral-background px-[26px] pt-[20px] pb-5">
         <div className="flex items-center justify-between max-w-md mx-auto">
-          <div className="flex items-center gap-3">
-            <button type="button" onClick={onBackClick} className="p-1">
-              <ArrowLeft size={24} className="text-primary-dark" />
+          <div className="flex items-center gap-4">
+            <button type="button" onClick={onBackClick} className="p-1.5">
+              <ArrowLeft size={26} className="text-primary-dark" />
             </button>
             <h1 className="text-2xl font-bold text-primary-dark">Symptoms</h1>
           </div>
           <button
             type="button"
             onClick={onAddClick}
-            className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center"
+            className="w-12 h-12 bg-primary rounded-2xl flex items-center justify-center"
           >
-            <Plus size={20} className="text-white" />
+            <Plus size={22} className="text-white" />
           </button>
         </div>
       </header>
 
       {/* Symptoms list */}
-      <main className="max-w-md mx-auto px-6 pb-[100px]">
-        <p className="text-sm text-neutral-dark mb-4">{symptoms.length} symptoms tracked</p>
-        <div className="space-y-4">
+      <main className="max-w-md mx-auto px-[26px] pb-[120px]">
+        <p className="text-sm text-neutral-dark mb-5">{symptoms.length} symptoms tracked</p>
+        <div className="space-y-5">
           {symptoms.map((symptom) => (
             <SymptomCard
               key={symptom.id}

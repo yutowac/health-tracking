@@ -33,18 +33,18 @@ export const YourWeekScreen: React.FC<YourWeekScreenProps> = ({
   return (
     <div className="min-h-screen bg-neutral-background">
       {/* Header with back button */}
-      <header className="bg-neutral-background px-6 pt-4 pb-4">
-        <div className="flex items-center gap-3 max-w-md mx-auto">
-          <button type="button" onClick={onBackClick} className="p-1">
-            <ArrowLeft size={24} className="text-primary-dark" />
+      <header className="bg-neutral-background px-[26px] pt-[20px] pb-5">
+        <div className="flex items-center gap-4 max-w-md mx-auto">
+          <button type="button" onClick={onBackClick} className="p-1.5">
+            <ArrowLeft size={26} className="text-primary-dark" />
           </button>
           <h1 className="text-2xl font-bold text-primary-dark">Your Week</h1>
         </div>
       </header>
 
       {/* Progress wheel */}
-      <main className="max-w-md mx-auto px-6 pb-[100px]">
-        <Card className="rounded-3xl mb-6" padding="lg">
+      <main className="max-w-md mx-auto px-[26px] pb-[120px]">
+        <Card className="rounded-[24px] mb-8" padding="xl">
           <div className="flex flex-col items-center py-4">
             <div className="relative w-48 h-48">
               <svg className="w-full h-full transform -rotate-90">
@@ -91,11 +91,11 @@ export const YourWeekScreen: React.FC<YourWeekScreenProps> = ({
         </Card>
 
         {/* Medications section */}
-        <div className="mb-6">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-2">
-              <Pill size={20} className="text-primary" />
-              <h2 className="text-base font-semibold text-primary-dark">Medications</h2>
+        <div className="mb-8">
+          <div className="flex items-center justify-between mb-5">
+            <div className="flex items-center gap-3">
+              <Pill size={22} className="text-primary" />
+              <h2 className="text-lg font-semibold text-primary-dark">Medications</h2>
             </div>
             <button
               type="button"
@@ -105,7 +105,7 @@ export const YourWeekScreen: React.FC<YourWeekScreenProps> = ({
               View all
             </button>
           </div>
-          <div className="space-y-4">
+          <div className="space-y-5">
             {medications.slice(0, 2).map((medication) => (
               <MedicationCard
                 key={medication.id}
@@ -117,11 +117,11 @@ export const YourWeekScreen: React.FC<YourWeekScreenProps> = ({
         </div>
 
         {/* Symptoms section */}
-        <div className="mb-6">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-2">
-              <Activity size={20} className="text-accent-pink" />
-              <h2 className="text-base font-semibold text-primary-dark">Symptoms</h2>
+        <div className="mb-8">
+          <div className="flex items-center justify-between mb-5">
+            <div className="flex items-center gap-3">
+              <Activity size={22} className="text-accent-pink" />
+              <h2 className="text-lg font-semibold text-primary-dark">Symptoms</h2>
             </div>
             <button
               type="button"
@@ -131,7 +131,7 @@ export const YourWeekScreen: React.FC<YourWeekScreenProps> = ({
               View all
             </button>
           </div>
-          <div className="space-y-4">
+          <div className="space-y-5">
             {symptoms.slice(0, 2).map((symptom) => (
               <SymptomCard
                 key={symptom.id}

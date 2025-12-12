@@ -17,29 +17,29 @@ export const MedicalInfoEditScreen: React.FC<MedicalInfoEditScreenProps> = ({
   return (
     <div className="min-h-screen bg-neutral-background">
       {/* Header with back and done buttons */}
-      <header className="bg-neutral-background px-6 pt-4 pb-4">
+      <header className="bg-neutral-background px-[26px] pt-[20px] pb-5">
         <div className="flex items-center justify-between max-w-md mx-auto">
-          <div className="flex items-center gap-3">
-            <button type="button" onClick={onBackClick} className="p-1">
-              <ArrowLeft size={24} className="text-primary-dark" />
+          <div className="flex items-center gap-4">
+            <button type="button" onClick={onBackClick} className="p-1.5">
+              <ArrowLeft size={26} className="text-primary-dark" />
             </button>
             <h1 className="text-xl font-bold text-primary-dark">Edit Medical Info</h1>
           </div>
           <button
             type="button"
             onClick={onSaveClick}
-            className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center"
+            className="w-12 h-12 bg-primary rounded-2xl flex items-center justify-center"
           >
-            <Check size={20} className="text-white" />
+            <Check size={22} className="text-white" />
           </button>
         </div>
       </header>
 
       {/* Edit form */}
-      <main className="max-w-md mx-auto px-6 pb-[100px]">
-        <Card className="rounded-3xl" padding="lg">
+      <main className="max-w-md mx-auto px-[26px] pb-[120px]">
+        <Card className="rounded-[24px]" padding="xl">
           {/* Basic Info */}
-          <div className="space-y-5 mb-6">
+          <div className="space-y-6 mb-8">
             <div>
               <label className="block text-sm text-gray-500 mb-1">Name</label>
               <input
@@ -104,21 +104,21 @@ export const MedicalInfoEditScreen: React.FC<MedicalInfoEditScreenProps> = ({
           </div>
 
           {/* Allergies */}
-          <div className="mb-6">
-            <label className="block text-base font-semibold text-primary mb-2">Allergies</label>
+          <div className="mb-8">
+            <label className="block text-base font-semibold text-primary mb-3">Allergies</label>
             <input
               type="text"
               defaultValue={medicalInfo.allergies.join(', ')}
               placeholder="Enter allergies separated by commas"
-              className="w-full px-4 py-3 bg-gray-50 rounded-xl text-primary-dark font-medium focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full px-5 py-4 bg-gray-50 rounded-xl text-primary-dark font-medium focus:outline-none focus:ring-2 focus:ring-primary"
             />
           </div>
 
           {/* Emergency Contact */}
           <div>
-            <label className="block text-base font-semibold text-primary mb-2">Emergency Contact</label>
+            <label className="block text-base font-semibold text-primary mb-3">Emergency Contact</label>
             {medicalInfo.emergencyContacts.map((contact, index) => (
-              <div key={index} className="space-y-3 p-4 bg-gray-50 rounded-xl">
+              <div key={index} className="space-y-4 p-5 bg-gray-50 rounded-xl">
                 <input
                   type="text"
                   defaultValue={contact.name}

@@ -22,8 +22,8 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = ({
   ];
 
   return (
-    <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40">
-      <div className="bg-white rounded-3xl shadow-lg px-6 py-3 flex items-center gap-8">
+    <nav className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40">
+      <div className="bg-white rounded-[28px] shadow-lg px-8 py-4 flex items-center gap-10">
         {tabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;
@@ -33,13 +33,13 @@ export const BottomNavigation: React.FC<BottomNavigationProps> = ({
               type="button"
               onClick={() => onTabChange(tab.id)}
               aria-label={tab.label}
-              className={`p-2 rounded-xl transition-all duration-200 ${
+              className={`p-2.5 rounded-xl transition-all duration-200 ${
                 isActive
                   ? 'text-primary bg-primary/10'
                   : 'text-text-muted hover:text-primary'
               }`}
             >
-              <Icon size={22} strokeWidth={2} />
+              <Icon size={24} strokeWidth={2} />
             </button>
           );
         })}

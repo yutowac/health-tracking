@@ -21,73 +21,73 @@ export const AppointmentCard: React.FC<AppointmentCardProps> = ({
   return (
     <Card onClick={onClick} padding="xl" className="transition-shadow">
       {/* Doctor name and specialty */}
-      <h3 className="text-lg font-bold text-primary-dark mb-1">{appointment.doctor}</h3>
-      <p className="text-sm text-neutral-dark mb-4">{appointment.specialty}</p>
+      <h3 className="text-xl font-bold text-primary-dark mb-1">{appointment.doctor}</h3>
+      <p className="text-sm text-neutral-dark mb-5">{appointment.specialty}</p>
       
       {/* Contact info */}
-      <div className="flex items-center gap-4 text-[13px] text-neutral-dark mb-4">
+      <div className="flex items-center gap-5 text-[13px] text-neutral-dark mb-5">
         {appointment.email && (
           <div className="flex items-center gap-2">
-            <Mail size={14} className="text-text-muted" />
+            <Mail size={15} className="text-text-muted" />
             <span>{appointment.email}</span>
           </div>
         )}
         {appointment.phone && (
           <div className="flex items-center gap-2">
-            <Phone size={14} className="text-text-muted" />
+            <Phone size={15} className="text-text-muted" />
             <span>{appointment.phone}</span>
           </div>
         )}
       </div>
       
       {/* Date and Time */}
-      <div className="flex gap-8 mb-4">
+      <div className="flex gap-10 mb-5">
         <div>
           <p className="text-[11px] uppercase tracking-wide text-text-muted mb-1">Date</p>
-          <p className="text-[15px] font-semibold text-primary-dark">{appointment.date}</p>
+          <p className="text-base font-semibold text-primary-dark">{appointment.date}</p>
         </div>
         <div>
           <p className="text-[11px] uppercase tracking-wide text-text-muted mb-1">Time</p>
-          <p className="text-[15px] font-semibold text-primary-dark">{appointment.time}</p>
+          <p className="text-base font-semibold text-primary-dark">{appointment.time}</p>
         </div>
       </div>
       
       {/* Address */}
-      <div className="mb-4">
+      <div className="mb-5">
         <p className="text-[11px] uppercase tracking-wide text-text-muted mb-1">Address</p>
-        <p className="text-[15px] font-semibold text-primary-dark mb-1">{appointment.location}</p>
+        <p className="text-base font-semibold text-primary-dark mb-2">{appointment.location}</p>
         <button
           type="button"
-          className="flex items-center gap-1 text-[12px] text-primary font-medium hover:underline"
+          className="flex items-center gap-1.5 text-[13px] text-primary font-medium hover:underline"
           onClick={(e) => { e.stopPropagation(); }}
         >
-          <MapPin size={12} />
+          <MapPin size={14} />
           Open in Google Maps
         </button>
       </div>
       
       {/* Action buttons */}
-      <div className="flex justify-end gap-2">
+      <div className="flex justify-end gap-3">
         <button
           type="button"
           onClick={(e) => { e.stopPropagation(); onEmailClick(); }}
-          className="w-10 h-10 rounded-full bg-primary-light flex items-center justify-center hover:bg-primary-light/80 transition-colors"
+          className="w-11 h-11 rounded-full bg-primary-light flex items-center justify-center hover:bg-primary-light/80 transition-colors"
         >
-          <Mail size={18} className="text-primary" />
+          <Mail size={20} className="text-primary" />
         </button>
         <button
           type="button"
           onClick={(e) => { e.stopPropagation(); onPhoneClick(); }}
-          className="w-10 h-10 rounded-full bg-primary-light flex items-center justify-center hover:bg-primary-light/80 transition-colors"
+          className="w-11 h-11 rounded-full bg-primary-light flex items-center justify-center hover:bg-primary-light/80 transition-colors"
         >
-          <Phone size={18} className="text-primary" />
+          <Phone size={20} className="text-primary" />
         </button>
         <button
           type="button"
           onClick={(e) => { e.stopPropagation(); onEditClick(); }}
-          className="w-10 h-10 rounded-full bg-primary-light flex items-center justify-center hover:bg-primary-light/80 transition-colors"
+          className="w-11 h-11 rounded-full bg-primary-light flex items-center justify-center hover:bg-primary-light/80 transition-colors"
         >
-          <Pencil size={18} className="text-primary" />
+          <Pencil size={20} className="text-primary" />
         </button>
       </div>
     </Card>
