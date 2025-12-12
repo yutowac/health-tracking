@@ -10,6 +10,10 @@ interface MedicalInfoEditScreenProps {
   onSaveClick?: () => void;
 }
 
+const inputClassName = "w-full px-4 py-3.5 bg-primary-light/30 border border-primary-light rounded-2xl text-[14px] text-primary-dark font-medium placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all";
+const labelClassName = "block text-[11px] uppercase tracking-wide text-text-muted mb-2";
+const sectionLabelClassName = "block text-[15px] font-semibold text-primary-dark mb-3";
+
 export const MedicalInfoEditScreen: React.FC<MedicalInfoEditScreenProps> = ({
   medicalInfo,
   onBackClick,
@@ -19,7 +23,7 @@ export const MedicalInfoEditScreen: React.FC<MedicalInfoEditScreenProps> = ({
     <button
       type="button"
       onClick={onSaveClick}
-      className="w-12 h-12 bg-primary rounded-2xl flex items-center justify-center"
+      className="w-12 h-12 bg-gradient-to-br from-primary to-[#0066d6] rounded-2xl flex items-center justify-center shadow-[0_4px_12px_rgba(0,122,255,0.3)] active:scale-95 transition-transform"
     >
       <Check size={22} className="text-white" />
     </button>
@@ -31,26 +35,25 @@ export const MedicalInfoEditScreen: React.FC<MedicalInfoEditScreenProps> = ({
         title="Edit Medical Info"
         onBackClick={onBackClick}
         rightSlot={saveButton}
+        variant="secondary"
       />
 
-      {/* Edit form */}
       <main className="max-w-md mx-auto px-[26px] pb-[120px]">
-        <Card className="rounded-[24px]" padding="xl">
-          {/* Basic Info */}
-          <div className="space-y-6 mb-8">
+        <Card padding="xl">
+          <div className="space-y-5 mb-8">
             <div>
-              <label className="block text-sm text-gray-500 mb-1">Name</label>
+              <label className={labelClassName}>Name</label>
               <input
                 type="text"
                 defaultValue={medicalInfo.name}
-                className="w-full px-4 py-3 bg-gray-50 rounded-xl text-primary-dark font-medium focus:outline-none focus:ring-2 focus:ring-primary"
+                className={inputClassName}
               />
             </div>
             <div>
-              <label className="block text-sm text-gray-500 mb-1">Gender</label>
+              <label className={labelClassName}>Gender</label>
               <select
                 defaultValue={medicalInfo.gender}
-                className="w-full px-4 py-3 bg-gray-50 rounded-xl text-primary-dark font-medium focus:outline-none focus:ring-2 focus:ring-primary"
+                className={inputClassName}
               >
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
@@ -58,36 +61,36 @@ export const MedicalInfoEditScreen: React.FC<MedicalInfoEditScreenProps> = ({
               </select>
             </div>
             <div>
-              <label className="block text-sm text-gray-500 mb-1">Birthday</label>
+              <label className={labelClassName}>Birthday</label>
               <input
                 type="text"
                 defaultValue={medicalInfo.birthday}
-                className="w-full px-4 py-3 bg-gray-50 rounded-xl text-primary-dark font-medium focus:outline-none focus:ring-2 focus:ring-primary"
+                className={inputClassName}
               />
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm text-gray-500 mb-1">Height</label>
+                <label className={labelClassName}>Height</label>
                 <input
                   type="text"
                   defaultValue={medicalInfo.height}
-                  className="w-full px-4 py-3 bg-gray-50 rounded-xl text-primary-dark font-medium focus:outline-none focus:ring-2 focus:ring-primary"
+                  className={inputClassName}
                 />
               </div>
               <div>
-                <label className="block text-sm text-gray-500 mb-1">Weight</label>
+                <label className={labelClassName}>Weight</label>
                 <input
                   type="text"
                   defaultValue={medicalInfo.weight}
-                  className="w-full px-4 py-3 bg-gray-50 rounded-xl text-primary-dark font-medium focus:outline-none focus:ring-2 focus:ring-primary"
+                  className={inputClassName}
                 />
               </div>
             </div>
             <div>
-              <label className="block text-sm text-gray-500 mb-1">Blood Group</label>
+              <label className={labelClassName}>Blood Group</label>
               <select
                 defaultValue={medicalInfo.bloodGroup}
-                className="w-full px-4 py-3 bg-gray-50 rounded-xl text-primary-dark font-medium focus:outline-none focus:ring-2 focus:ring-primary"
+                className={inputClassName}
               >
                 <option value="A+">A+</option>
                 <option value="A-">A-</option>
@@ -101,45 +104,43 @@ export const MedicalInfoEditScreen: React.FC<MedicalInfoEditScreenProps> = ({
             </div>
           </div>
 
-          {/* Allergies */}
           <div className="mb-8">
-            <label className="block text-base font-semibold text-primary mb-3">Allergies</label>
+            <label className={sectionLabelClassName}>Allergies</label>
             <input
               type="text"
               defaultValue={medicalInfo.allergies.join(', ')}
               placeholder="Enter allergies separated by commas"
-              className="w-full px-5 py-4 bg-gray-50 rounded-xl text-primary-dark font-medium focus:outline-none focus:ring-2 focus:ring-primary"
+              className={inputClassName}
             />
           </div>
 
-          {/* Emergency Contact */}
           <div>
-            <label className="block text-base font-semibold text-primary mb-3">Emergency Contact</label>
+            <label className={sectionLabelClassName}>Emergency Contact</label>
             {medicalInfo.emergencyContacts.map((contact, index) => (
-              <div key={index} className="space-y-4 p-5 bg-gray-50 rounded-xl">
+              <div key={index} className="space-y-3 p-5 bg-primary-light/20 rounded-2xl border border-primary-light">
                 <input
                   type="text"
                   defaultValue={contact.name}
                   placeholder="Name"
-                  className="w-full px-4 py-2 bg-white rounded-lg text-primary-dark focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full px-4 py-3 bg-white rounded-xl text-[14px] text-primary-dark font-medium focus:outline-none focus:ring-2 focus:ring-primary transition-all"
                 />
                 <input
                   type="text"
                   defaultValue={contact.phone}
                   placeholder="Phone"
-                  className="w-full px-4 py-2 bg-white rounded-lg text-primary-dark focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full px-4 py-3 bg-white rounded-xl text-[14px] text-primary-dark font-medium focus:outline-none focus:ring-2 focus:ring-primary transition-all"
                 />
                 <input
                   type="text"
                   defaultValue={contact.address}
                   placeholder="Address"
-                  className="w-full px-4 py-2 bg-white rounded-lg text-primary-dark focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full px-4 py-3 bg-white rounded-xl text-[14px] text-primary-dark font-medium focus:outline-none focus:ring-2 focus:ring-primary transition-all"
                 />
                 <input
                   type="email"
                   defaultValue={contact.email}
                   placeholder="Email"
-                  className="w-full px-4 py-2 bg-white rounded-lg text-primary-dark focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full px-4 py-3 bg-white rounded-xl text-[14px] text-primary-dark font-medium focus:outline-none focus:ring-2 focus:ring-primary transition-all"
                 />
               </div>
             ))}

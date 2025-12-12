@@ -5,3 +5,4 @@ export { Avatar } from './Avatar';
 export { Card } from './Card';
 export { Checkbox } from './Checkbox';
 export { Slider } from './Slider';
+export { SectionTitle } from './SectionTitle';
