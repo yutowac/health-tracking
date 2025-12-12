@@ -7,24 +7,32 @@ on:
 permissions:
   contents: read
 
-concurrency:
-  group: coderabbit-review-${{ github.event.pull_request.number }}
-  cancel-in-progress: true
-
 jobs:
   comment-coderabbit-review:
     if: >
       github.event.pull_request.user.login == 'devin-ai-integration[bot]' &&
       github.event.pull_request.draft == false
     runs-on: ubuntu-latest
+
     steps:
+      - name: Debug secrets presence (safe)
+        run: |
+          if [ -z "${{ secrets.CODERABBIT_APP_ID }}" ]; then
+            echo "CODERABBIT_APP_ID is EMPTY (missing or not accessible)"
+            exit 1
+          fi
+          if [ -z "${{ secrets.CODERABBIT_APP_PRIVATE_KEY }}" ]; then
+            echo "CODERABBIT_APP_PRIVATE_KEY is EMPTY (missing or not accessible)"
+            exit 1
+          fi
+          echo "Secrets look present."
+
       - name: Create GitHub App token
         id: app-token
         uses: actions/create-github-app-token@v1
-
         with:
-          app-id: ${{ secrets.APP_ID }}
-          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+          app-id: ${{ secrets.CODERABBIT_APP_ID }}
+          private-key: ${{ secrets.CODERABBIT_APP_PRIVATE_KEY }}
 
       - name: Comment "@coderabbitai review" (once)
         uses: actions/github-script@v7
@@ -40,10 +48,7 @@ jobs:
             });
 
             const already = comments.some(c => (c.body || "").trim() === body);
-            if (already) {
-              core.info("Already commented. Skipping.");
-              return;
-            }
+            if (already) return;
 
             await github.rest.issues.createComment({
               owner, repo, issue_number,
